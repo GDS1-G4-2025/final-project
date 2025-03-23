@@ -4,6 +4,7 @@ about: Fetch or create assets for the game
 title: "[Asset]"
 labels: ''
 assignees: leilamei
+type: 'Task'
 
 ---
 

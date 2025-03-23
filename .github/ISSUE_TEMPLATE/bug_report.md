@@ -4,6 +4,7 @@ about: Error found
 title: "[BUG]: "
 labels: ''
 assignees: joaopcmiranda
+type: 'Bug'
 
 ---
 
