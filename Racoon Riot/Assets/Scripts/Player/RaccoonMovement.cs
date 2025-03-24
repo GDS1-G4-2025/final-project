@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 public class RaccoonMovement : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed = 10.0f;
-    [SerializeField] private float _rotationSpeed = 0.0001f;
-    [SerializeField] private float _accel = 15f;
+    [SerializeField] private float _rotationSpeed = 50.0f;
+    [SerializeField] private float _accel = 10.0f;
 
     private Rigidbody _rb;
     private Animator _animator;
 
-    //Player Movement
+    // Player Movement
     private PlayerInput _playerInput;
     private InputAction _moveAction;
     private Vector2 _movementInput;
@@ -39,40 +39,24 @@ public class RaccoonMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
-
         _movementInput = ctx.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
     {
-        //Desired direction based on camera
-        Vector3 cameraForward = Camera.main.transform.forward;
-        Vector3 cameraRight = Camera.main.transform.right;
+        //Rotate
+        float turnInput = _movementInput.x;
+        float forwardInput = _movementInput.y;
 
-        //Ignore vertical
-        cameraForward.y = 0f;
-        cameraRight.y = 0f;
-
-        cameraForward.Normalize();
-        cameraRight.Normalize();
-
-        Vector3 desiredMoveDirection = (cameraForward * _movementInput.y) +
-                                       (cameraRight * _movementInput.x);
-        desiredMoveDirection.Normalize();
-
-        //Rotate to face direction of travel
-        if (desiredMoveDirection.sqrMagnitude > 0.001f)
+        if (Mathf.Abs(turnInput) > 0.1f)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(desiredMoveDirection, Vector3.up);
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                targetRotation,
-                _rotationSpeed * Time.fixedDeltaTime
-            );
+            float turnDegrees = turnInput * _rotationSpeed * Time.fixedDeltaTime;
+            transform.Rotate(0f, turnDegrees, 0f);
         }
 
-        //Move
-        Vector3 targetVelocity = desiredMoveDirection * _movementSpeed;
+        Vector3 targetVelocity = transform.forward * forwardInput * _movementSpeed;
+        targetVelocity.y = _rb.linearVelocity.y;
+
         _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, targetVelocity, _accel * Time.fixedDeltaTime);
     }
 }
