@@ -577,6 +577,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raccoon
       objectReference: {fileID: 0}
+    - target: {fileID: 6951981896806529548, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ff1b61ab7ba43954bb10c63e396bbedb, type: 2}
+    - target: {fileID: 6951981896806529548, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9190947198541813910, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
