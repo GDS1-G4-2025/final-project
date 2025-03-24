@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class RaccoonMovement : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed = 10.0f;
-    [SerializeField] private float _rotationSpeed = 50.0f;
+    [SerializeField] private float _rotationSpeed = 150.0f;
     [SerializeField] private float _accel = 10.0f;
 
     private Rigidbody _rb;
