@@ -4,17 +4,31 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class RaccoonMovement : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private float _movementSpeed = 10.0f;
     [SerializeField] private float _rotationSpeed = 150.0f;
     [SerializeField] private float _accel = 10.0f;
 
+    [Header("Jumping")]
+    [SerializeField] private float _jumpForce = 5.0f;
+    [SerializeField] private float _fallMultiplier = 2.5f;
+    [SerializeField] private Transform _groundCheck;
+    [SerializeField] private float _groundCheckRadius = 0.2f;
+    [SerializeField] private LayerMask _groundLayer;
+
+    //Components
     private Rigidbody _rb;
     private Animator _animator;
 
-    // Player Movement
+    //Player Movement
     private PlayerInput _playerInput;
     private InputAction _moveAction;
+    private InputAction _jumpAction;
     private Vector2 _movementInput;
+
+    //Jumping
+    private bool _isGrounded;
+    private bool _jumpPressed;
 
     private void Awake()
     {
@@ -23,18 +37,21 @@ public class RaccoonMovement : MonoBehaviour
 
         _playerInput = GetComponent<PlayerInput>();
         _moveAction = _playerInput.actions.FindAction("Move");
+        _jumpAction = _playerInput.actions.FindAction("Jump");
     }
 
     private void OnEnable()
     {
         _moveAction.performed += OnMove;
         _moveAction.canceled += OnMove;
+        _jumpAction.performed += OnJumpPerformed;
     }
 
     private void OnDisable()
     {
         _moveAction.performed -= OnMove;
         _moveAction.canceled -= OnMove;
+        _jumpAction.performed -= OnJumpPerformed;
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -42,7 +59,35 @@ public class RaccoonMovement : MonoBehaviour
         _movementInput = ctx.ReadValue<Vector2>();
     }
 
+    public void OnJumpPerformed(InputAction.CallbackContext ctx)
+    {
+        _jumpPressed = true;
+    }
+
+    //Movement updates
     private void FixedUpdate()
+    {
+        CheckGrounded();
+        HandleMovement();
+        HandleJump();
+
+        //Adds more responsive feel to jumping
+        ApplyStrongerFalling();
+    }
+
+    private void CheckGrounded()
+    {
+        if (_groundCheck == null)
+        {
+            _isGrounded = true;
+            return;
+        }
+
+        _isGrounded = Physics.CheckSphere(_groundCheck.position, _groundCheckRadius, _groundLayer);
+    }
+
+    //Move
+    private void HandleMovement()
     {
         //Rotate
         float turnInput = _movementInput.x;
@@ -57,6 +102,40 @@ public class RaccoonMovement : MonoBehaviour
         Vector3 targetVelocity = transform.forward * forwardInput * _movementSpeed;
         targetVelocity.y = _rb.linearVelocity.y;
 
+        //Lerping for smoother movement
         _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, targetVelocity, _accel * Time.fixedDeltaTime);
+    }
+
+    //Jump
+    private void HandleJump()
+    {
+        if (_jumpPressed && _isGrounded)
+        {
+            Vector3 velocity = _rb.linearVelocity;
+            velocity.y = 0f;
+            _rb.linearVelocity = velocity;
+            _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        }
+        _jumpPressed = false;
+    }
+
+    //Adds more responsive feel to jumping
+    private void ApplyStrongerFalling()
+    {
+        if (!_isGrounded && _rb.linearVelocity.y < 0f)
+        {
+            Vector3 extraGravity = Physics.gravity * _fallMultiplier - Physics.gravity;
+            _rb.AddForce(extraGravity, ForceMode.Acceleration);
+        }
+    }
+
+    //Checking where ground check is being performed in scene view
+    private void OnDrawGizmosSelected()
+    {
+        if (_groundCheck != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
+        }
     }
 }
