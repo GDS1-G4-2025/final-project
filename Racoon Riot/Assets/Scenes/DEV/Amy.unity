@@ -1505,7 +1505,7 @@ GameObject:
   - component: {fileID: 1201127247745957945}
   - component: {fileID: 1201127247745957944}
   m_Layer: 0
-  m_Name: Raccoon PA
+  m_Name: Raccoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2832,10 +2832,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSpeed: 8
   _rotationSpeed: 150
-  _accel: 7
+  _accel: 3
   _jumpForce: 5
   _fallMultiplier: 2.5
-  _groundCheck: {fileID: 0}
+  _groundCheck: {fileID: 669358198}
   _groundCheckRadius: 0.2
   _groundLayer:
     serializedVersion: 2
