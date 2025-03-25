@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class RaccoonMovement : MonoBehaviour
@@ -15,6 +16,7 @@ public class RaccoonMovement : MonoBehaviour
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private float _jumpDelay = 1.5f;
 
     //Components
     private Rigidbody _rb;
@@ -29,6 +31,7 @@ public class RaccoonMovement : MonoBehaviour
     //Jumping
     private bool _isGrounded;
     private bool _jumpPressed;
+    private bool _canJump = true;
 
     private void Awake()
     {
@@ -111,14 +114,24 @@ public class RaccoonMovement : MonoBehaviour
     //Jump
     private void HandleJump()
     {
-        if (_jumpPressed && _isGrounded)
+        if (_jumpPressed && _isGrounded && _canJump)
         {
             Vector3 velocity = _rb.linearVelocity;
             velocity.y = 0f;
             _rb.linearVelocity = velocity;
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+
+            _animator.SetTrigger("jumpTrigger");
+            StartCoroutine(JumpCooldown());
         }
         _jumpPressed = false;
+    }
+
+    private IEnumerator JumpCooldown()
+    {
+        _canJump = false;
+        yield return new WaitForSeconds(_jumpDelay);
+        _canJump = true;
     }
 
     //Adds more responsive feel to jumping
@@ -152,5 +165,15 @@ public class RaccoonMovement : MonoBehaviour
         _animator.SetFloat("inputX", inputX);
         _animator.SetFloat("inputY", inputY);
         _animator.SetFloat("speed", speed);
+        _animator.SetFloat("verticalVelocity", _rb.linearVelocity.y);
+        
+        if (_isGrounded)
+        {
+            _animator.SetBool("isGrounded", true);
+        }
+        else
+        {
+            _animator.SetBool("isGrounded", false);
+        }
     }
 }
