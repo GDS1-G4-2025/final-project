@@ -73,6 +73,8 @@ public class RaccoonMovement : MonoBehaviour
 
         //Adds more responsive feel to jumping
         ApplyStrongerFalling();
+
+        UpdateAnimatorParameters();
     }
 
     private void CheckGrounded()
@@ -137,5 +139,18 @@ public class RaccoonMovement : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
         }
+    }
+
+    private void UpdateAnimatorParameters()
+    {
+        float inputMagnitude = _movementInput.magnitude;
+        float inputX = _movementInput.x;
+        float inputY = _movementInput.y;
+        float speed = _rb.linearVelocity.magnitude;
+
+        _animator.SetFloat("inputMagnitude", inputMagnitude);
+        _animator.SetFloat("inputX", inputX);
+        _animator.SetFloat("inputY", inputY);
+        _animator.SetFloat("speed", speed);
     }
 }
