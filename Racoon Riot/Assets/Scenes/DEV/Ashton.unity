@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4127527133882904640, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+      propertyPath: _attackAction.m_Name
+      value: Attack
+      objectReference: {fileID: 0}
     - target: {fileID: 6420262241996668159, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
       propertyPath: m_Name
       value: Raccoon

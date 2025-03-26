@@ -8,9 +8,9 @@ public class RaccoonAttack : MonoBehaviour
     public float GetAttackDuration(){ return _attackDuration; }
     public float GetAttackDamage(){ return _attackDamage; }
     
-    private PlayerInput _playerInput;
-    private InputAction _attackAction;
-    private bool _isAttacking = false;
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private InputAction _attackAction;
+    [SerializeField] private bool _isAttacking = false;
 
     private void Awake()
     {
@@ -33,7 +33,8 @@ public class RaccoonAttack : MonoBehaviour
         _isAttacking = true;
     }
 
-    private void FixedUpdate(){
+    void Update() 
+    {
         if (_isAttacking){
             Debug.Log("Attacking");
             _attackCollisionHolder.SetActive(true);
