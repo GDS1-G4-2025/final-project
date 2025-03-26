@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 104063533187326812}
   - component: {fileID: 5334479779587920472}
   m_Layer: 0
-  m_Name: Raccoon Main
+  m_Name: Raccoon-Anims
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,10 +334,10 @@ MonoBehaviour:
   _jumpForce: 5
   _fallMultiplier: 2.5
   _groundCheck: {fileID: 1165499048578064404}
-  _groundCheckRadius: 0.2
+  _groundCheckRadius: 0.05
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 9
   _jumpDelay: 1.5
 --- !u!135 &104063533187326812
 SphereCollider:
