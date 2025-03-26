@@ -135,6 +135,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raccoon
       objectReference: {fileID: 0}
+    - target: {fileID: 6883848870491436675, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883848870491436675, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883848870491436675, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 72653839}
+    - target: {fileID: 6883848870491436675, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883848870491436675, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883848870491436675, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RaccoonAttack, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883848870491436675, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9190947198541813910, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -180,6 +208,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+--- !u!114 &72653839 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4127527133882904640, guid: 5a7d327f7dc9e0646bee180738e4a381, type: 3}
+  m_PrefabInstance: {fileID: 725903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be132dc1698630444b9ebb9e53b991f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &432170583
 GameObject:
   m_ObjectHideFlags: 0

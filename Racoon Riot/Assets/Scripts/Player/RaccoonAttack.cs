@@ -8,27 +8,27 @@ public class RaccoonAttack : MonoBehaviour
     public float GetAttackDuration(){ return _attackDuration; }
     public float GetAttackDamage(){ return _attackDamage; }
     
-    [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private InputAction _attackAction;
-    [SerializeField] private bool _isAttacking = false;
+    private PlayerInput _playerInput;
+    private InputAction _attackAction;
+    private bool _isAttacking = false;
 
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
-        _attackAction = _playerInput.actions.FindAction("Fire1");
+        _attackAction = _playerInput.actions.FindAction("Attack");
     }
 
     private void OnEnable()
     {
-        _attackAction.performed += OnAttackPerformed;
+        _attackAction.performed += OnAttack;
     }
 
     private void OnDisable()
     {
-        _attackAction.performed -= OnAttackPerformed;
+        _attackAction.performed -= OnAttack;
     }
 
-        public void OnAttackPerformed(InputAction.CallbackContext ctx)
+    public void OnAttack(InputAction.CallbackContext ctx)
     {
         _isAttacking = true;
     }
