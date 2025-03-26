@@ -80,7 +80,7 @@ public class RaccoonMovement : MonoBehaviour
         UpdateAnimatorParameters();
 
         float inputMagnitude = _movementInput.magnitude;
-        Debug.Log($"InputMagnitude = {inputMagnitude}");
+        //Debug.Log($"InputMagnitude = {inputMagnitude}");
     }
 
     private void CheckGrounded()
