@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 6883848870491436675}
   - component: {fileID: 5281280481445634267}
   - component: {fileID: 5692996495456703426}
+  - component: {fileID: 4127527133882904640}
   m_Layer: 0
   m_Name: Raccoon
   m_TagString: Player
@@ -508,6 +509,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+--- !u!114 &4127527133882904640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420262241996668159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be132dc1698630444b9ebb9e53b991f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCollisionHolder: {fileID: 6514858454158167631}
+  _attackDuration: 1
+  _attackDamage: 10
 --- !u!1 &6514858454158167631
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4951aa8e78ff6240b02c534ef6ae3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackHandler: {fileID: 4127527133882904640}
+  _attackDuration: 0
+  _attackDamage: 0
 --- !u!1 &7019446065586435994
 GameObject:
   m_ObjectHideFlags: 0
