@@ -16,7 +16,7 @@ public class RaccoonMovement : MonoBehaviour
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask _groundLayer;
-    [SerializeField] private float _jumpDelay = 1.5f;
+    [SerializeField] private float _jumpDelay = 1.8f;
 
     //Components
     private Rigidbody _rb;
