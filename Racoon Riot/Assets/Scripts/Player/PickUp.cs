@@ -4,6 +4,7 @@ public class PickUp : MonoBehaviour
 {
     public GameObject Object;
     public GameObject racoonHand;
+    private bool isInPickupRange = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,20 +14,20 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if (isInPickupRange && Input.GetKeyDown(KeyCode.E) && Object != null)
+        {
+            PickUpObject();
+        }
         if (Object != null)
         {
             Object.transform.position = racoonHand.transform.position;
-        }
-        if (Input.GetKeyDown(KeyCode.E) && Object != null)
-        {
-            PickUpObject();
         }
         
     }
     public void PickUpObject(){
         Object.transform.SetParent(racoonHand.transform);
-        Object.transform.localPosition = new Vector3 (0f,0f,0f);
-        // Object.transform.localScale = new Vector3 (1f,1f,1f);
+        Object.transform.localPosition = Vector3.zero;
 
         
     }
@@ -34,6 +35,7 @@ public class PickUp : MonoBehaviour
     {
         if(other.CompareTag("PickUpObject"))
         {
+            isInPickupRange = true;
             Object = other.gameObject;
             Debug.Log (other.gameObject.name + " is picked up!");
 
@@ -41,6 +43,7 @@ public class PickUp : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
+        isInPickupRange = false;
         if(other.CompareTag("PickUpObject") && Object == other.gameObject)
         {
             Object = null;
