@@ -4,7 +4,6 @@ public class PickUp : MonoBehaviour
 {
     public GameObject Object;
     public GameObject racoonHand;
-    private bool isInPickupRange = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,11 +14,11 @@ public class PickUp : MonoBehaviour
     void Update()
     {
         
-        if (isInPickupRange && Input.GetKeyDown(KeyCode.E) && Object != null)
+        if (Input.GetKeyDown(KeyCode.E) && Object != null)
         {
             PickUpObject();
         }
-        if (Object != null)
+        if (Object != null && Object.transform.parent == racoonHand.transform)
         {
             Object.transform.position = racoonHand.transform.position;
         }
@@ -33,9 +32,8 @@ public class PickUp : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("PickUpObject"))
+        if(Object == null && other.CompareTag("PickUpObject"))
         {
-            isInPickupRange = true;
             Object = other.gameObject;
             Debug.Log (other.gameObject.name + " is picked up!");
 
@@ -43,7 +41,6 @@ public class PickUp : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
-        isInPickupRange = false;
         if(other.CompareTag("PickUpObject") && Object == other.gameObject)
         {
             Object = null;
