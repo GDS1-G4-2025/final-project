@@ -4,8 +4,12 @@ public class PlayerData : MonoBehaviour
 {
     [SerializeField] private float _health;
     [SerializeField] private float _points;
+    [SerializeField] private GameObject _collidingTask;
+    public GameObject GetCollidingTask(){ return _collidingTask; }
+    public void SetCollidingTask(GameObject collidingTask){ _collidingTask = collidingTask; }
+    
     private float _maxHealth;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         _maxHealth = _health;
