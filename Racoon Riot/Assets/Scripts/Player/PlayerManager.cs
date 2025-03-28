@@ -19,6 +19,11 @@ public class PlayerManager : MonoBehaviour
 
     public void SpawnPlayers()
     {
+        if (playerCount > playerSpawnPoints.Length)
+        {
+            Debug.LogWarning("Player spawn points exceeds " + playerCount + " players");
+            return;
+        }
         _players = new GameObject[playerCount];
         for (var i = 0; i < playerCount; i++)
         {
