@@ -38,6 +38,7 @@ public class TaskData : MonoBehaviour
     void OnDisable()
     {
         foreach(GameObject node in _nodes){ node.SetActive(false); }
+        foreach(GameObject player in _collidingPlayers){ player.GetComponent<PlayerData>().SetCollidingTask(null); }
     }
 
         private void OnTriggerEnter(Collider other) {
