@@ -8,8 +8,8 @@ public class TaskManager : MonoBehaviour
     [SerializeField] private List<GameObject> _currentTasks;
     [SerializeField] private List<GameObject> _completedTasks;
 
-    public void Update(){
-        if(_currentTasks.Count < _numberOfConcurrentTasks){
+    public void FixedUpdate(){
+        if(_currentTasks.Count < _numberOfConcurrentTasks && _upcomingTasks.Count > 0){
             MoveTaskToCurrent(_upcomingTasks[Random.Range(0, _upcomingTasks.Count-1)]);
         }
     }
