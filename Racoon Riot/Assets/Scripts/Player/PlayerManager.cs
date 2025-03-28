@@ -1,38 +1,43 @@
-using System;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public Camera mainCamera;
     public Transform[] playerSpawnPoints;
     public GameObject playerPrefab;
     public int playerCount;
+    public int renderTextureResolution = 1024;
+
+    [HideInInspector]
+    public RenderTexture[] renderTextures;
 
     private GameObject[] _players;
-    private Camera[] _playerCameras;
-    private RenderTexture[] _renderTextures;
-
-    private Material _splitScreenMaterial;
 
     private void Start()
     {
-
+        SpawnPlayers();
     }
 
     public void SpawnPlayers()
     {
+
+        renderTextures = new RenderTexture[playerCount];
         _players = new GameObject[playerCount];
+
         for (var i = 0; i < playerCount; i++)
         {
+            renderTextures[i] = CreateRenderTexture();
+
             _players[i] = Instantiate(playerPrefab, playerSpawnPoints[i].position, playerSpawnPoints[i].rotation);
 
             var cameraRef = _players[i].GetComponent<CameraRef>();
             if (cameraRef != null)
             {
                 cameraRef.cam.enabled = true;
+                cameraRef.cam.targetTexture = renderTextures[i];
             }
         }
     }
+
 
     public void RespawnPlayer(int playerIndex)
     {
@@ -45,6 +50,16 @@ public class PlayerManager : MonoBehaviour
         for (var i = 0; i < playerCount; i++)
         {
             Destroy(_players[i]);
+            Destroy(renderTextures[i]);
         }
+    }
+
+    private RenderTexture CreateRenderTexture()
+    {
+        // Create a render texture with desired settings
+        return new RenderTexture(renderTextureResolution, renderTextureResolution, 24)
+        {
+            filterMode = FilterMode.Bilinear
+        };
     }
 }

@@ -17,9 +17,6 @@
         },
         {
             "m_Id": "bd2cfb8474944d8fb1ad0be20b5d4ed4"
-        },
-        {
-            "m_Id": "3fa5df9b1f7e46f8b9a09a60e934da7e"
         }
     ],
     "m_Keywords": [],
@@ -1082,9 +1079,6 @@
         },
         {
             "m_Id": "3135c124c88040a0a9ec2b236b1c39a1"
-        },
-        {
-            "m_Id": "3fa5df9b1f7e46f8b9a09a60e934da7e"
         }
     ]
 }
@@ -1437,10 +1431,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2776.999755859375,
-            "y": -688.9999389648438,
+            "x": -3038.999755859375,
+            "y": -694.9999389648438,
             "width": 252.0,
-            "height": 142.99993896484376
+            "height": 143.0
         }
     },
     "m_Slots": [
@@ -1873,34 +1867,6 @@
         "m_SerializableColors": []
     },
     "m_ComparisonType": 0
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "3fa5df9b1f7e46f8b9a09a60e934da7e",
-    "m_Guid": {
-        "m_GuidSerialized": "9e57f27f-fb43-45e5-a47f-9a176d552a11"
-    },
-    "m_Name": "_BorderWidth",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "_BorderWidth",
-    "m_DefaultReferenceName": "_BorderWidth",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 0.004999999888241291,
-    "m_FloatType": 1,
-    "m_RangeValues": {
-        "x": 0.0010000000474974514,
-        "y": 0.10000000149011612
-    }
 }
 
 {
@@ -3672,8 +3638,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2955.0,
-            "y": -647.9999389648438,
+            "x": -3216.999755859375,
+            "y": -653.9999389648438,
             "width": 144.0,
             "height": 34.0
         }
