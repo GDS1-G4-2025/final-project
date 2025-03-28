@@ -1,21 +1,25 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class RaccoonAttack : MonoBehaviour
 {
     [SerializeField] private GameObject _attackCollisionHolder;
     [SerializeField] private float _attackDuration, _attackDamage;
+
     public float GetAttackDuration(){ return _attackDuration; }
     public float GetAttackDamage(){ return _attackDamage; }
     
     private PlayerInput _playerInput;
     private InputAction _attackAction;
     private bool _isAttacking = false;
+    private Animator _animator;
 
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
         _attackAction = _playerInput.actions.FindAction("Attack");
+        _animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -30,15 +34,32 @@ public class RaccoonAttack : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext ctx)
     {
-        _isAttacking = true;
+        if (!_isAttacking)
+        {
+            StartCoroutine(AttackRoutine());
+        }
     }
 
-    void Update() 
+    private IEnumerator AttackRoutine()
     {
-        if (_isAttacking){
-            Debug.Log("Attacking");
-            _attackCollisionHolder.SetActive(true);
-            _isAttacking = false;
-        }
+        _isAttacking = true;
+        _animator.SetBool("isAttacking", true);
+
+        //Disabling movement
+        _playerInput.actions["Move"].Disable();
+        _playerInput.actions["Jump"].Disable();
+
+        Debug.Log("Attacking");
+        _animator.SetTrigger("attack");
+        _attackCollisionHolder.SetActive(true);
+
+        yield return new WaitForSeconds(_attackDuration);
+
+        //Enabling movement
+        _playerInput.actions["Move"].Enable();
+        _playerInput.actions["Jump"].Enable();
+
+        _isAttacking = false;
+        _animator.SetBool("isAttacking", false);
     }
 }
