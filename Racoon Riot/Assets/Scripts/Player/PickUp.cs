@@ -4,6 +4,7 @@ public class PickUp : MonoBehaviour
 {
     public GameObject Object;
     public GameObject racoonHand;
+    public float throwForce = 10f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,6 +23,10 @@ public class PickUp : MonoBehaviour
         {
             Object.transform.position = racoonHand.transform.position;
         }
+        if (Input.GetKeyDown(KeyCode.T) && Object != null)
+        {
+            ThrowObject();
+        }
         
     }
     public void PickUpObject(){
@@ -29,6 +34,18 @@ public class PickUp : MonoBehaviour
         Object.transform.localPosition = Vector3.zero;
 
         
+    }
+    public void ThrowObject()
+    {
+        Object.transform.SetParent(null);
+        Rigidbody rb = Object.GetComponent<Rigidbody>();
+        if (rb != null) 
+        {
+            rb.isKinematic = false;
+            rb.AddForce (racoonHand.transform.forward * throwForce, ForceMode.Impulse);
+        } 
+        Object = null;
+
     }
     public void OnTriggerEnter(Collider other)
     {
