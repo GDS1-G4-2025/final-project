@@ -2751,8 +2751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0706f55b70b2634caa6ca91e23af8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAtIntensity: 5
-  smoothSpeed: 10
+  lookAtIntensity: 1.5
+  smoothSpeed: 7
   _camera: {fileID: 769520398187264576}
   _locRef: {fileID: 6147947824036468425}
   _rotRef: {fileID: 615487009947868138}

@@ -656,6 +656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raccoon-Anims
       objectReference: {fileID: 0}
+    - target: {fileID: 2529035135447041199, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+      propertyPath: lookAtIntensity
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7081887502781210198, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
