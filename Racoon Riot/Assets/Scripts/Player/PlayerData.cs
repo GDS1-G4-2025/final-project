@@ -7,6 +7,9 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private GameObject _collidingTask;
     public GameObject GetCollidingTask(){ return _collidingTask; }
     public void SetCollidingTask(GameObject collidingTask){ _collidingTask = collidingTask; }
+    [SerializeField] private GameObject _collidingNode;
+    public GameObject GetCollidingNode(){ return _collidingNode; }
+    public void SetColldingNode(GameObject collidingNode){ _collidingNode = collidingNode; }
 
     [SerializeField] private GameObject _heldObject;
     public GameObject GetHeldObject(){ return _heldObject;}

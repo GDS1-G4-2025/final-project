@@ -42,7 +42,7 @@ public class TaskData : MonoBehaviour
         foreach(GameObject player in _collidingPlayers){ player.GetComponent<PlayerData>().SetCollidingTask(null); }
     }
 
-        private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Player")){
             if(!_collidingPlayers.Contains(other.gameObject)){ 
                 other.gameObject.GetComponent<PlayerData>().SetCollidingTask(this.gameObject);
