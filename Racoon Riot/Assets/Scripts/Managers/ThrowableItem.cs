@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class ThrowableItem : MonoBehaviour
+public class ThrowableItem : PickableItem
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public float throwForce = 10f;
 
-    // Update is called once per frame
-    void Update()
+    public void Throw(Vector3 direction)
     {
-        
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            transform.SetParent(null); // Detach from player hand
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.AddForce(direction * throwForce, ForceMode.Impulse);
+            Debug.Log(itemName + " was thrown!");
+        }
     }
 }
