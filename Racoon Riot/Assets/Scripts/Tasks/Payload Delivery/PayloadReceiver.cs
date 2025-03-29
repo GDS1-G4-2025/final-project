@@ -15,7 +15,9 @@ public class PayloadReceiver : MonoBehaviour
             foreach(GameObject node in _taskData.GetNodes()){
                 if(node == _taskData.GetTryComplete().GetComponent<PlayerData>().GetHeldObject()){
                     _receivedCount += 1;
+                    node.transform.parent = this.transform;
                     node.SetActive(false);
+                    _taskData.GetTryComplete().GetComponent<PlayerData>().SetHeldObject(null);
                 }
             }
         }

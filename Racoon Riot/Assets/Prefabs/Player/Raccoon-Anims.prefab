@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 4952082798455261539}
   - component: {fileID: 6752680995567630666}
   - component: {fileID: 5791426454753261805}
+  - component: {fileID: 6549571210748212936}
   m_Layer: 0
   m_Name: Raccoon-Anims
   m_TagString: Player
@@ -243,6 +244,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5791426454753261805}
         m_TargetAssemblyTypeName: PickUp, Assembly-CSharp
         m_MethodName: PickUpObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6549571210748212936}
+        m_TargetAssemblyTypeName: PlayerInteract, Assembly-CSharp
+        m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -424,6 +437,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  _points: 0
+  _collidingTask: {fileID: 0}
+  _collidingNode: {fileID: 0}
+  _heldObject: {fileID: 0}
 --- !u!114 &5791426454753261805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +455,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pickUpTarget: {fileID: 0}
   _heldItemHandler: {fileID: 4580722346766851041}
+--- !u!114 &6549571210748212936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49290752420e0d346a6d169acd508ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &683602115596898450
 GameObject:
   m_ObjectHideFlags: 0

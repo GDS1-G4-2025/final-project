@@ -39,6 +39,8 @@ public class PickUp : MonoBehaviour
         if(_pickUpTarget != null){
             _pickUpTarget.transform.SetParent(_heldItemHandler.transform);
             _pickUpTarget.transform.localPosition = Vector3.zero;
+            this.gameObject.GetComponent<PlayerData>().SetHeldObject(_pickUpTarget);
+            _pickUpTarget = null;
         }
     }
     public void OnTriggerEnter(Collider other)
@@ -46,8 +48,6 @@ public class PickUp : MonoBehaviour
         if(_pickUpTarget == null && other.CompareTag("PickUpObject"))
         {
             _pickUpTarget = other.gameObject;
-            Debug.Log (other.gameObject.name + " is picked up!");
-
         }
     }
     public void OnTriggerExit(Collider other)
@@ -55,7 +55,6 @@ public class PickUp : MonoBehaviour
         if(other.CompareTag("PickUpObject") && _pickUpTarget == other.gameObject)
         {
             _pickUpTarget = null;
-
         }
     }
 }
