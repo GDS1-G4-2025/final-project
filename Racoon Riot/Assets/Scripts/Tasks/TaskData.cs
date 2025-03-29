@@ -22,6 +22,7 @@ public class TaskData : MonoBehaviour
 
     void Start()
     {
+        _taskManager = Object.FindAnyObjectByType<TaskManager>();
         _taskManager.AddTask(this.gameObject);
         _collidingPlayers = new List<GameObject>();
         this.gameObject.SetActive(false);
