@@ -7,6 +7,8 @@ requirement or pre-requisite to completing the main task will not include this
 */
 public class TaskData : MonoBehaviour
 {
+    [SerializeField] private string _taskName;
+    public string GetTaskName(){ return _taskName; }
     [SerializeField] private TaskManager _taskManager;
     [SerializeField] private List<GameObject> _collidingPlayers;
     [SerializeField] private List<GameObject> _nodes;
