@@ -43,6 +43,9 @@ public class PlayerInteract : MonoBehaviour
         if (_isInteracting && _playerData.GetCollidingTask() != null){
             _playerData.GetCollidingTask().GetComponent<TaskData>().SetTryComplete(this.gameObject);
         }
+        else if (!_isInteracting && _playerData.GetCollidingTask() != null){
+            _playerData.GetCollidingTask().GetComponent<TaskData>().SetTryComplete(null);
+        }
         if (_isInteracting && _playerData.GetCollidingNode() != null){
             _playerData.GetCollidingNode().GetComponent<NodeData>().SetActivateNode(true);
         }

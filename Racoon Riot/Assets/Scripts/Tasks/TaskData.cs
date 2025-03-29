@@ -57,6 +57,7 @@ public class TaskData : MonoBehaviour
                 other.gameObject.GetComponent<PlayerData>().SetCollidingTask(null);
                 _collidingPlayers.Remove(other.gameObject);
             }
+            if(_tryComplete == other.gameObject){ _tryComplete = null; }
         }
     }
 }

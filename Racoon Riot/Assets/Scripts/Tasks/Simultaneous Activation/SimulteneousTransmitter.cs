@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class SimulteneousTransmitter : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private bool _nodeActive;
+    [SerializeField] private NodeData _nodeData;
+
     void Start()
     {
-        
+        _nodeData = this.gameObject.GetComponent<NodeData>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if(_nodeData.GetActivateNode() && !_nodeActive){
+            _nodeData.GetParentTask().GetComponent<SimultaneousReceiver>().AdjustNodeActive(+1);
+            _nodeActive = true;
+        }
+        else if(!_nodeData.GetActivateNode() && _nodeActive){
+            _nodeData.GetParentTask().GetComponent<SimultaneousReceiver>().AdjustNodeActive(-1);
+            _nodeActive = false;
+        }
     }
 }

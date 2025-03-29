@@ -131,8 +131,8 @@ GameObject:
   - component: {fileID: 6230347}
   - component: {fileID: 6230346}
   - component: {fileID: 6230345}
-  - component: {fileID: 6230344}
   - component: {fileID: 6230343}
+  - component: {fileID: 6230349}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -157,19 +157,6 @@ MonoBehaviour:
   _nodes: []
   _pointAllocation: 1
   _tryComplete: {fileID: 0}
---- !u!114 &6230344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6230342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7c1b7ab4591ecb4f878b534e29f43e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _taskData: {fileID: 0}
 --- !u!65 &6230345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -259,6 +246,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6230349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6230342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d3d9c460a89ed4585182cb2c91de39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _locked: 1
+  _taskData: {fileID: 0}
+  _nodesActive: 0
 --- !u!1 &136879760
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,8 +273,8 @@ GameObject:
   - component: {fileID: 136879765}
   - component: {fileID: 136879764}
   - component: {fileID: 136879763}
-  - component: {fileID: 136879762}
-  - component: {fileID: 136879761}
+  - component: {fileID: 136879768}
+  - component: {fileID: 136879767}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -280,36 +282,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &136879761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136879760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad15f2a28b048d849862da558c812fd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _taskManager: {fileID: 1128526068}
-  _collidingPlayers: []
-  _nodes: []
-  _pointAllocation: 1
-  _tryComplete: {fileID: 0}
---- !u!114 &136879762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136879760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7c1b7ab4591ecb4f878b534e29f43e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _taskData: {fileID: 0}
 --- !u!65 &136879763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -394,11 +366,40 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9, y: -0.38604432, z: -2.5524616}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &136879767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136879760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableNode: 1
+  _collidingPlayers: []
+  _parentTask: {fileID: 6230342}
+--- !u!114 &136879768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136879760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5343db0bcdda94584032db63124f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nodeActive: 0
+  _nodeData: {fileID: 0}
 --- !u!1 &257755462
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65577a8ed6ead3e4f84a24d3e8407f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfConcurrentTasks: 0
+  _numberOfConcurrentTasks: 3
   _upcomingTasks: []
   _currentTasks: []
   _completedTasks: []
