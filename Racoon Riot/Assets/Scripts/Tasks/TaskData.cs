@@ -11,6 +11,7 @@ public class TaskData : MonoBehaviour
     [SerializeField] private List<GameObject> _collidingPlayers;
     [SerializeField] private List<GameObject> _nodes;
     public void AddNode(GameObject node){ _nodes.Add(node); }
+    public List<GameObject> GetNodes(){ return _nodes;}
     [SerializeField] private int _pointAllocation;
     public int GetPointAllocation(){ return _pointAllocation; }
 

@@ -7,6 +7,10 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private GameObject _collidingTask;
     public GameObject GetCollidingTask(){ return _collidingTask; }
     public void SetCollidingTask(GameObject collidingTask){ _collidingTask = collidingTask; }
+
+    [SerializeField] private GameObject _heldObject;
+    public GameObject GetHeldObject(){ return _heldObject;}
+    public void SetHeldObject(GameObject item){ _heldObject = item; }
     
     private float _maxHealth;
 

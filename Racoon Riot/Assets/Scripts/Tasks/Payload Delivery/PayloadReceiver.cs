@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class PayloadReceiver : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private TaskData _taskData;
+    [SerializeField] private int _receivedCount;
     void Start()
     {
-        
+        _taskData = this.gameObject.GetComponent<TaskData>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if(_taskData.GetTryComplete() != null){
+            foreach(GameObject node in _taskData.GetNodes()){
+                if(node == _taskData.GetTryComplete().GetComponent<PlayerData>().GetHeldObject()){
+                    _receivedCount += 1;
+                    node.SetActive(false);
+                }
+            }
+        }
+        if(_receivedCount >= _taskData.GetNodes().Count){ _taskData.TaskCompleted(); }
     }
 }

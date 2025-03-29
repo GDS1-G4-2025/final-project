@@ -19,23 +19,27 @@ public class PlayerInteract : MonoBehaviour
         private void OnEnable()
     {
         _interactAction.performed += OnInteract;
+        _interactAction.canceled += OnCanceled;
     }
 
     private void OnDisable()
     {
         _interactAction.performed -= OnInteract;
+        _interactAction.canceled -= OnCanceled;
     }
 
     public void OnInteract(InputAction.CallbackContext ctx)
     {
         _isInteracting = true;
     }
+    public void OnCanceled(InputAction.CallbackContext ctx)
+    {
+        _isInteracting = false;
+    }
 
         void FixedUpdate() 
     {
         if (_isInteracting && _playerData.GetCollidingTask() != null){
-        //if(Input.GetKeyDown(KeyCode.V) && _playerData.GetCollidingTask() != null){
-            Debug.Log("1");
             _playerData.GetCollidingTask().GetComponent<TaskData>().SetTryComplete(this.gameObject);
         }
     }
