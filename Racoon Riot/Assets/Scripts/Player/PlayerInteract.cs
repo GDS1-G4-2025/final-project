@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,12 +32,13 @@ public class PlayerInteract : MonoBehaviour
     {
         _isInteracting = true;
     }
+
     public void OnCanceled(InputAction.CallbackContext ctx)
     {
         _isInteracting = false;
     }
 
-        void FixedUpdate() 
+        void FixedUpdate()
     {
         if (_isInteracting && _playerData.GetCollidingTask() != null){
             _playerData.GetCollidingTask().GetComponent<TaskData>().SetTryComplete(this.gameObject);
