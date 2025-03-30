@@ -24,8 +24,6 @@ public class RaccoonMovement : MonoBehaviour
 
     //Player Movement
     private PlayerInput _playerInput;
-    private InputAction _moveAction;
-    private InputAction _jumpAction;
     private Vector2 _movementInput;
 
     //Jumping
@@ -39,22 +37,6 @@ public class RaccoonMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         _playerInput = GetComponent<PlayerInput>();
-        _moveAction = _playerInput.actions.FindAction("Move");
-        _jumpAction = _playerInput.actions.FindAction("Jump");
-    }
-
-    private void OnEnable()
-    {
-        _moveAction.performed += OnMove;
-        _moveAction.canceled += OnMove;
-        _jumpAction.performed += OnJumpPerformed;
-    }
-
-    private void OnDisable()
-    {
-        _moveAction.performed -= OnMove;
-        _moveAction.canceled -= OnMove;
-        _jumpAction.performed -= OnJumpPerformed;
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
