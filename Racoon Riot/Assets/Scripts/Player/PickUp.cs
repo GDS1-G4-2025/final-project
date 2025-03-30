@@ -40,6 +40,7 @@ public class PickUp : MonoBehaviour
             _pickUpTarget.transform.SetParent(_heldItemHandler.transform);
             _pickUpTarget.transform.localPosition = Vector3.zero;
             this.gameObject.GetComponent<PlayerData>().SetHeldObject(_pickUpTarget);
+            _pickUpTarget.GetComponent<Rigidbody>().isKinematic = true;
             _pickUpTarget = null;
         }
     }
