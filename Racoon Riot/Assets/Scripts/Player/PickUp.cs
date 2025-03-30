@@ -58,4 +58,18 @@ public class PickUp : MonoBehaviour
             _pickUpTarget = null;
         }
     }
+
+        public void OnCollisionEnter(Collision other) {
+        if(this.gameObject.GetComponent<PlayerData>().GetHeldObject() == null && other.transform.CompareTag("PickUpObject"))
+        {
+            _pickUpTarget = other.gameObject;
+        }
+    }
+    private void OnCollisionExit(Collision other)
+    {
+        if(other.transform.CompareTag("PickUpObject") && _pickUpTarget == other.gameObject)
+        {
+            _pickUpTarget = null;
+        }
+    }
 }
