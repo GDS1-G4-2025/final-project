@@ -411,6 +411,7 @@ MonoBehaviour:
   _attackCollisionHolder: {fileID: 4591374410342815120}
   _attackDuration: 1
   _attackDamage: 10
+  _knockbackForce: 200
 --- !u!114 &6752680995567630666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1470,6 +1471,7 @@ MonoBehaviour:
   _attackHandler: {fileID: 4952082798455261539}
   _attackDuration: 0
   _attackDamage: 0
+  _knockbackForce: 0
 --- !u!1 &4597196533974100483
 GameObject:
   m_ObjectHideFlags: 0
