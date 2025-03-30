@@ -366,7 +366,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 9
-  _jumpDelay: 1.5
+  _jumpDelay: 1
 --- !u!135 &104063533187326812
 SphereCollider:
   m_ObjectHideFlags: 0
