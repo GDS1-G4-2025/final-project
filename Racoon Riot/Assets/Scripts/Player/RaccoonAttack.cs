@@ -5,10 +5,11 @@ using System.Collections;
 public class RaccoonAttack : MonoBehaviour
 {
     [SerializeField] private GameObject _attackCollisionHolder;
-    [SerializeField] private float _attackDuration, _attackDamage;
+    [SerializeField] private float _attackDuration, _attackDamage, _knockbackForce;
 
     public float GetAttackDuration(){ return _attackDuration; }
     public float GetAttackDamage(){ return _attackDamage; }
+    public float GetKnockbackForce(){ return _knockbackForce; }
     
     private PlayerInput _playerInput;
     private InputAction _attackAction;
