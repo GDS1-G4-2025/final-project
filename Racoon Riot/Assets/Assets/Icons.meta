@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Racoon Riot/Assets/Assets/Icons.meta
-guid: 4789723a5b4e9e64dad3a0d1d0fb37db
-========
 guid: 9dcdd4460423c834b9553a22a95875db
->>>>>>>> dev:Racoon Riot/Assets/RenderFeatures.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:
