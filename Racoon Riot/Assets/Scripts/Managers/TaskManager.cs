@@ -6,6 +6,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] private int _numberOfConcurrentTasks;
     [SerializeField] private List<GameObject> _upcomingTasks;
     [SerializeField] private List<GameObject> _currentTasks;
+    public List<GameObject> GetCurrentTasks(){ return _currentTasks; }
     [SerializeField] private List<GameObject> _completedTasks;
 
     public void FixedUpdate(){
