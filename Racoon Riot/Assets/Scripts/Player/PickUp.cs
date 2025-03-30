@@ -40,6 +40,7 @@ public class PickUp : MonoBehaviour
             _pickUpTarget.transform.SetParent(_heldItemHandler.transform);
             _pickUpTarget.transform.localPosition = Vector3.zero;
             this.gameObject.GetComponent<PlayerData>().SetHeldObject(_pickUpTarget);
+            _pickUpTarget.GetComponent<Rigidbody>().isKinematic = true;
             _pickUpTarget = null;
         }
     }
@@ -53,6 +54,20 @@ public class PickUp : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("PickUpObject") && _pickUpTarget == other.gameObject)
+        {
+            _pickUpTarget = null;
+        }
+    }
+
+        public void OnCollisionEnter(Collision other) {
+        if(this.gameObject.GetComponent<PlayerData>().GetHeldObject() == null && other.transform.CompareTag("PickUpObject"))
+        {
+            _pickUpTarget = other.gameObject;
+        }
+    }
+    private void OnCollisionExit(Collision other)
+    {
+        if(other.transform.CompareTag("PickUpObject") && _pickUpTarget == other.gameObject)
         {
             _pickUpTarget = null;
         }
