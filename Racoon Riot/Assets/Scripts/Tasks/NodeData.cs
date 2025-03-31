@@ -33,9 +33,10 @@ public class NodeData : MonoBehaviour
         {
             if (!_collidingPlayers.Contains(other.gameObject))
             {
-                if (_isInteractable && other.gameObject.GetComponent<Player>().collidingNode == null)
+                if (_isInteractable && other.gameObject.TryGetComponent(out Player player))
                 {
-                    other.gameObject.GetComponent<Player>().collidingNode = this;
+                    if (player.collidingNode == null)
+                        player.collidingNode = this;
                 }
                 _collidingPlayers.Add(other.gameObject);
             }
@@ -48,9 +49,10 @@ public class NodeData : MonoBehaviour
         {
             if (_collidingPlayers.Contains(other.gameObject))
             {
-                if (_isInteractable && other.gameObject.GetComponent<Player>().collidingNode == this)
+                if (_isInteractable && other.gameObject.TryGetComponent(out Player player))
                 {
-                    other.gameObject.GetComponent<Player>().collidingNode = null;
+                    if (player.collidingNode == this)
+                        player.collidingNode = null;
                 }
                 _collidingPlayers.Remove(other.gameObject);
             }
