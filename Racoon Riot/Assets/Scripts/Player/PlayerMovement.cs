@@ -2,9 +2,17 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 
-[RequireComponent(typeof(Rigidbody))]
-public class RaccoonMovement : MonoBehaviour
+[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Animator))]
+public class PlayerMovement : MonoBehaviour
 {
+    private static readonly int InputMagnitude = Animator.StringToHash("inputMagnitude");
+    private static readonly int InputX = Animator.StringToHash("inputX");
+    private static readonly int InputY = Animator.StringToHash("inputY");
+    private static readonly int Speed = Animator.StringToHash("speed");
+    private static readonly int VerticalVelocity = Animator.StringToHash("verticalVelocity");
+    private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
+    private static readonly int JumpTrigger = Animator.StringToHash("jumpTrigger");
+
     [Header("Movement")]
     [SerializeField] private float _movementSpeed = 10.0f;
     [SerializeField] private float _rotationSpeed = 150.0f;
@@ -23,7 +31,6 @@ public class RaccoonMovement : MonoBehaviour
     private Animator _animator;
 
     //Player Movement
-    private PlayerInput _playerInput;
     private Vector2 _movementInput;
 
     //Jumping
@@ -35,8 +42,6 @@ public class RaccoonMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
-
-        _playerInput = GetComponent<PlayerInput>();
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -61,13 +66,12 @@ public class RaccoonMovement : MonoBehaviour
 
         UpdateAnimatorParameters();
 
-        float inputMagnitude = _movementInput.magnitude;
-        //Debug.Log($"InputMagnitude = {inputMagnitude}");
+        //Debug.Log($"InputMagnitude = {_movementInput.magnitude}");
     }
 
     private void CheckGrounded()
     {
-        if (_groundCheck == null)
+        if (!_groundCheck)
         {
             _isGrounded = true;
             return;
@@ -80,16 +84,16 @@ public class RaccoonMovement : MonoBehaviour
     private void HandleMovement()
     {
         //Rotate
-        float turnInput = _movementInput.x;
-        float forwardInput = _movementInput.y;
+        var turnInput = _movementInput.x;
+        var forwardInput = _movementInput.y;
 
         if (Mathf.Abs(turnInput) > 0.1f)
         {
-            float turnDegrees = turnInput * _rotationSpeed * Time.fixedDeltaTime;
+            var turnDegrees = turnInput * _rotationSpeed * Time.fixedDeltaTime;
             transform.Rotate(0f, turnDegrees, 0f);
         }
 
-        Vector3 targetVelocity = transform.forward * forwardInput * _movementSpeed;
+        var targetVelocity = transform.forward * (forwardInput * _movementSpeed);
         targetVelocity.y = _rb.linearVelocity.y;
 
         //Lerping for smoother movement
@@ -101,12 +105,12 @@ public class RaccoonMovement : MonoBehaviour
     {
         if (_jumpPressed && _isGrounded && _canJump)
         {
-            Vector3 velocity = _rb.linearVelocity;
+            var velocity = _rb.linearVelocity;
             velocity.y = 0f;
             _rb.linearVelocity = velocity;
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
 
-            _animator.SetTrigger("jumpTrigger");
+            _animator.SetTrigger(JumpTrigger);
             StartCoroutine(JumpCooldown());
         }
         _jumpPressed = false;
@@ -124,7 +128,7 @@ public class RaccoonMovement : MonoBehaviour
     {
         if (!_isGrounded && _rb.linearVelocity.y < 0f)
         {
-            Vector3 extraGravity = Physics.gravity * _fallMultiplier - Physics.gravity;
+            var extraGravity = Physics.gravity * _fallMultiplier - Physics.gravity;
             _rb.AddForce(extraGravity, ForceMode.Acceleration);
         }
     }
@@ -141,24 +145,17 @@ public class RaccoonMovement : MonoBehaviour
 
     private void UpdateAnimatorParameters()
     {
-        float inputMagnitude = _movementInput.magnitude;
-        float inputX = _movementInput.x;
-        float inputY = _movementInput.y;
-        float speed = _rb.linearVelocity.magnitude;
+        var inputMagnitude = _movementInput.magnitude;
+        var inputX = _movementInput.x;
+        var inputY = _movementInput.y;
+        var speed = _rb.linearVelocity.magnitude;
 
-        _animator.SetFloat("inputMagnitude", inputMagnitude);
-        _animator.SetFloat("inputX", inputX);
-        _animator.SetFloat("inputY", inputY);
-        _animator.SetFloat("speed", speed);
-        _animator.SetFloat("verticalVelocity", _rb.linearVelocity.y);
-        
-        if (_isGrounded)
-        {
-            _animator.SetBool("isGrounded", true);
-        }
-        else
-        {
-            _animator.SetBool("isGrounded", false);
-        }
+        _animator.SetFloat(InputMagnitude, inputMagnitude);
+        _animator.SetFloat(InputX, inputX);
+        _animator.SetFloat(InputY, inputY);
+        _animator.SetFloat(Speed, speed);
+        _animator.SetFloat(VerticalVelocity, _rb.linearVelocity.y);
+
+        _animator.SetBool(IsGrounded, _isGrounded);
     }
 }

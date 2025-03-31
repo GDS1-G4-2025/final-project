@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInputManager))]
 public class PlayerManager : MonoBehaviour
 {
-    public Transform[] playerSpawnPoints;
-    public int playerCount;
-    public GameObject playerPrefab;
+    [SerializeField] private Transform[] _playerSpawnPoints;
+    [SerializeField] private int _playerCount;
+    [SerializeField] private GameObject _playerPrefab;
 
     private GameObject[] _players;
     private PlayerInputManager _playerInputManager;
@@ -13,35 +14,40 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         _playerInputManager = GetComponent<PlayerInputManager>();
-        _playerInputManager.playerPrefab = playerPrefab;
+        _playerInputManager.playerPrefab = _playerPrefab;
         SpawnPlayers();
     }
 
     public void SpawnPlayers()
     {
-        if (playerCount > playerSpawnPoints.Length)
+        if (_playerCount > _playerSpawnPoints.Length)
         {
-            Debug.LogWarning("Player spawn points exceeds " + playerCount + " players");
+            Debug.LogWarning("Player spawn points exceeds " + _playerCount + " players");
             return;
         }
-        _players = new GameObject[playerCount];
-        for (var i = 0; i < playerCount; i++)
+        _players = new GameObject[_playerCount];
+        for (var i = 0; i < _playerCount; i++)
         {
-            _players[i] = _playerInputManager.JoinPlayer(i).gameObject;
-            _players[i].transform.position = playerSpawnPoints[i].position;
-            _players[i].transform.rotation = playerSpawnPoints[i].rotation;
+            _players[i] = _playerInputManager.JoinPlayer(i)?.gameObject;
+            if (_players[i] == null)
+            {
+                Debug.LogWarning("Failed to spawn player " + i);
+                return;
+            }
+            _players[i].transform.position = _playerSpawnPoints[i].position;
+            _players[i].transform.rotation = _playerSpawnPoints[i].rotation;
         }
     }
 
     public void RespawnPlayer(int playerIndex)
     {
-        _players[playerIndex].transform.position = playerSpawnPoints[playerIndex].position;
-        _players[playerIndex].transform.rotation = playerSpawnPoints[playerIndex].rotation;
+        _players[playerIndex].transform.position = _playerSpawnPoints[playerIndex].position;
+        _players[playerIndex].transform.rotation = _playerSpawnPoints[playerIndex].rotation;
     }
 
     public void DestroyPlayers()
     {
-        for (var i = 0; i < playerCount; i++)
+        for (var i = 0; i < _playerCount; i++)
         {
             Destroy(_players[i]);
         }

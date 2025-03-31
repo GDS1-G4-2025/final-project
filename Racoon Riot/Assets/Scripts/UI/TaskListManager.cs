@@ -4,23 +4,20 @@ using UnityEngine;
 public class TaskListManager : MonoBehaviour
 {
     private TaskManager _taskManager;
-    [SerializeField] private TMP_Text[] listItems;
+    [SerializeField] private TMP_Text[] _listItems;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        _taskManager = Object.FindAnyObjectByType<TaskManager>();
+        _taskManager = FindAnyObjectByType<TaskManager>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        for(int i = 0; i < listItems.Length; i++){
-            if(i < _taskManager.GetCurrentTasks().Count){
-                listItems[i].text = _taskManager.GetCurrentTasks()[i].GetComponent<TaskData>().GetTaskName();
-            }
-            else{
-                listItems[i].text = "";
-            }
+        for (var i = 0; i < _listItems.Length; i++)
+        {
+            _listItems[i].text = i < _taskManager.CurrentTasks.Count ? _taskManager.CurrentTasks[i].taskName : "";
         }
     }
 }

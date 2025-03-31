@@ -102,16 +102,18 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7081887502781210198}
-  - component: {fileID: 2694808508466260177}
-  - component: {fileID: 5879243435164880715}
   - component: {fileID: 4608069173120779056}
+  - component: {fileID: 1631692391772186867}
   - component: {fileID: 9191895444210700826}
-  - component: {fileID: 104063533187326812}
-  - component: {fileID: 5334479779587920472}
   - component: {fileID: 4952082798455261539}
-  - component: {fileID: 6752680995567630666}
   - component: {fileID: 5791426454753261805}
   - component: {fileID: 6549571210748212936}
+  - component: {fileID: 8767659629944127140}
+  - component: {fileID: 5418883949459982808}
+  - component: {fileID: 5879243435164880715}
+  - component: {fileID: 104063533187326812}
+  - component: {fileID: 5334479779587920472}
+  - component: {fileID: 2694808508466260177}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -141,55 +143,6 @@ Transform:
   - {fileID: 5717100645694550486}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &2694808508466260177
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663259388419450612}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 42b16888dccfed94fb39302aa553204d, type: 3}
-  m_Controller: {fileID: 9100000, guid: bf7e357512d635d4293145ef3bdb7b1a, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!54 &5879243435164880715
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663259388419450612}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &4608069173120779056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +201,19 @@ MonoBehaviour:
     m_ActionId: 6b444451-8a00-4d00-a97e-f47457f736a8
     m_ActionName: 'Player/Look[/DualSenseGamepadHID/rightStick,/Mouse/delta]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4952082798455261539}
+        m_TargetAssemblyTypeName: RaccoonAttack, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: 'Player/Attack[/DualSenseGamepadHID/buttonWest,/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
@@ -356,6 +321,26 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1771030902511571472}
+--- !u!114 &1631692391772186867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f37134c8d2f932442ad2e96901083295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 0}
+  health: {fileID: 0}
+  hold: {fileID: 0}
+  interaction: {fileID: 0}
+  movement: {fileID: 0}
+  score: {fileID: 0}
+  collidingTask: {fileID: 0}
+  collidingNode: {fileID: 0}
 --- !u!114 &9191895444210700826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +364,102 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9
   _jumpDelay: 1
+--- !u!114 &4952082798455261539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be132dc1698630444b9ebb9e53b991f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCollisionHolder: {fileID: 4591374410342815120}
+  _attackDuration: 1
+  _attackDamage: 10
+  _knockbackForce: 200
+--- !u!114 &5791426454753261805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7bc5e27941141d7879b855bc21f47e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heldObject: {fileID: 0}
+  _pickUpTarget: {fileID: 0}
+  _heldItemHandler: {fileID: 4580722346766851041}
+--- !u!114 &6549571210748212936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49290752420e0d346a6d169acd508ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8767659629944127140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 005845755d7743f580cbc776c006fd1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &5418883949459982808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f302a73e0164052874926798273c919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+--- !u!54 &5879243435164880715
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!135 &104063533187326812
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -421,65 +502,28 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: 0, y: 0.35, z: 0.3}
---- !u!114 &4952082798455261539
-MonoBehaviour:
+--- !u!95 &2694808508466260177
+Animator:
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663259388419450612}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be132dc1698630444b9ebb9e53b991f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackCollisionHolder: {fileID: 4591374410342815120}
-  _attackDuration: 1
-  _attackDamage: 10
-  _knockbackForce: 200
---- !u!114 &6752680995567630666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663259388419450612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f37134c8d2f932442ad2e96901083295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 100
-  _points: 0
-  _collidingTask: {fileID: 0}
-  _collidingNode: {fileID: 0}
-  _heldObject: {fileID: 0}
---- !u!114 &5791426454753261805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663259388419450612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7bc5e27941141d7879b855bc21f47e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pickUpTarget: {fileID: 0}
-  _heldItemHandler: {fileID: 4580722346766851041}
---- !u!114 &6549571210748212936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663259388419450612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49290752420e0d346a6d169acd508ba5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Avatar: {fileID: 9000000, guid: 42b16888dccfed94fb39302aa553204d, type: 3}
+  m_Controller: {fileID: 9100000, guid: bf7e357512d635d4293145ef3bdb7b1a, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &683602115596898450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,8 +1555,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackHandler: {fileID: 4952082798455261539}
   _attackDuration: 0
-  _attackDamage: 0
-  _knockbackForce: 0
 --- !u!1 &4597196533974100483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2853,8 +2895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0706f55b70b2634caa6ca91e23af8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAtIntensity: 1.5
-  smoothSpeed: 7
+  _lookAtIntensity: 3
+  _smoothSpeed: 10
   _camera: {fileID: 769520398187264576}
   _locRef: {fileID: 6147947824036468425}
   _rotRef: {fileID: 615487009947868138}

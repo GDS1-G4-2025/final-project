@@ -3,41 +3,58 @@ using UnityEngine;
 
 public class NodeData : MonoBehaviour
 {
-    [SerializeField] private bool _interactableNode;
+    [SerializeField] private bool _isInteractable;
     [SerializeField] private List<GameObject> _collidingPlayers;
-    [SerializeField] private GameObject _parentTask;
-    public GameObject GetParentTask(){ return _parentTask; }
+    [SerializeField] public TaskData parentTask;
 
-    private bool _activateNode;
-    public bool GetActivateNode(){ return _activateNode; }
-    public void SetActivateNode(bool activateNode){ _activateNode = activateNode; }
-
-    void Start()
+    private bool _active;
+    public bool Active
     {
-        _parentTask.GetComponent<TaskData>().AddNode(this.gameObject);
-        this.gameObject.SetActive(false);
+        get => _active;
+        set
+        {
+            if (_active == value) return;
+            _active = value;
+
+            // Notify transmitter about the state change
+            GetComponent<SimultaneousTransmitter>()?.OnNodeStateChanged(_active);
+        }
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.CompareTag("Player")){
-            if(!_collidingPlayers.Contains(other.gameObject)){ 
-                if(_interactableNode && other.gameObject.GetComponent<PlayerData>().GetCollidingNode() == null){
-                    other.gameObject.GetComponent<PlayerData>().SetColldingNode(this.gameObject);
+    private void Start()
+    {
+        parentTask.AddNode(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (!_collidingPlayers.Contains(other.gameObject))
+            {
+                if (_isInteractable && other.gameObject.GetComponent<Player>().collidingNode == null)
+                {
+                    other.gameObject.GetComponent<Player>().collidingNode = this;
                 }
                 _collidingPlayers.Add(other.gameObject);
             }
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        if(other.gameObject.CompareTag("Player")){
-            if(_collidingPlayers.Contains(other.gameObject)) { 
-                if(_interactableNode && other.gameObject.GetComponent<PlayerData>().GetCollidingNode() == this.gameObject){
-                    other.gameObject.GetComponent<PlayerData>().SetColldingNode(null);
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (_collidingPlayers.Contains(other.gameObject))
+            {
+                if (_isInteractable && other.gameObject.GetComponent<Player>().collidingNode == this)
+                {
+                    other.gameObject.GetComponent<Player>().collidingNode = null;
                 }
                 _collidingPlayers.Remove(other.gameObject);
             }
         }
-        if(_collidingPlayers.Count == 0){ _activateNode = false;}
+        if (_collidingPlayers.Count == 0) { Active = false; }
     }
 }

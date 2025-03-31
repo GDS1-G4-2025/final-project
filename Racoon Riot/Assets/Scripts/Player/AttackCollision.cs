@@ -2,25 +2,22 @@ using UnityEngine;
 
 public class AttackCollision : MonoBehaviour
 {
-    [SerializeField] private RaccoonAttack _attackHandler;
-    [SerializeField] private float _attackDuration, _attackDamage, _knockbackForce;
-    void OnEnable()
+    [SerializeField] private PlayerAttack _attackHandler;
+    [SerializeField] private float _attackDuration;
+    private void OnEnable()
     {
-        _attackDuration = _attackHandler.GetAttackDuration();
-        _attackDamage = _attackHandler.GetAttackDamage();
-        _knockbackForce = _attackHandler.GetKnockbackForce();
-        Invoke("DisableSelf", _attackDuration);
+        Invoke(nameof(DisableSelf), _attackDuration);
     }
 
-    void DisableSelf(){
-        this.gameObject.SetActive(false);
+    private void DisableSelf(){
+        gameObject.SetActive(false);
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.CompareTag("Player")){
-            other.gameObject.GetComponent<PlayerData>().TakeDamage(_attackDamage);
-            other.gameObject.GetComponent<Rigidbody>().AddForce(_attackHandler.gameObject.transform.forward*_knockbackForce);
+        if(other.transform.CompareTag("Player"))
+        {
+            _attackHandler.Attack(other.gameObject);
             DisableSelf();
         }
     }
