@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 
+
+[RequireComponent(typeof(Animator)), RequireComponent(typeof(PlayerMovement))]
 public class PlayerAttack : MonoBehaviour
 {
     private static readonly int IsAttackingStr = Animator.StringToHash("isAttacking");

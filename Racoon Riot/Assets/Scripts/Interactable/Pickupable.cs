@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Pickupable : Interactable
 {
     private Rigidbody _rb;
