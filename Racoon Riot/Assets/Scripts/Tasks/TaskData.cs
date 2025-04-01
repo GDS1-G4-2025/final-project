@@ -7,7 +7,6 @@ Task Data will be attached to the object that acts as the final step in a task.
 This will be where points are allocated through. Any task that acts as a
 requirement or pre-requisite to completing the main task will not include this
 */
-[RequireComponent(typeof(TaskManager))]
 public class TaskData : MonoBehaviour
 {
     public string taskName;
@@ -62,12 +61,21 @@ public class TaskData : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (_collidingPlayers.Contains(other.gameObject))
+            if(_collidingPlayers.Count > 0)
             {
-                other.gameObject.GetComponent<Player>().collidingTask = null;
-                _collidingPlayers.Remove(other.gameObject);
+                if (_collidingPlayers.Contains(other.gameObject))
+                {
+                    other.gameObject.GetComponent<Player>().collidingTask = null;
+                    _collidingPlayers.Remove(other.gameObject);
+                }
             }
-            if (playerAttempting.gameObject == other.gameObject) { playerAttempting = null; }
+            if (playerAttempting != null) 
+            {  
+                if(playerAttempting.gameObject == other.gameObject)
+                {
+                    playerAttempting = null;
+                }
+            }
         }
     }
 }
