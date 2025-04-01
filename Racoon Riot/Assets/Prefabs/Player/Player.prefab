@@ -356,7 +356,7 @@ MonoBehaviour:
   _movementSpeed: 8
   _rotationSpeed: 150
   _accel: 3
-  _jumpForce: 5
+  _jumpForce: 3.5
   _fallMultiplier: 2.5
   _groundCheck: {fileID: 1165499048578064404}
   _groundCheckRadius: 0.05
