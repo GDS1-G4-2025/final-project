@@ -22,13 +22,17 @@ public class PlayerInteraction : MonoBehaviour
                 // Handle task interaction
                 if (_player.collidingTask != null)
                 {
-                    _player.collidingTask.playerAttempting = _player;
-                }
-
-                // Handle node interaction
-                if (_player.collidingNode != null)
-                {
-                    _player.collidingNode.Active = true;
+                    if(_player.hold.heldObject == null)
+                    {
+                        _player.collidingTask.playersAttempting.Add(_player);
+                    }
+                    else if(_player.hold.heldObject.gameObject.TryGetComponent<TaskData>(out TaskData taskData))
+                    {
+                        if(taskData.RootTask == _player.collidingTask.gameObject)
+                        {
+                            _player.collidingTask.playersAttempting.Add(_player);
+                        }
+                    }
                 }
                 break;
             }
@@ -38,15 +42,40 @@ public class PlayerInteraction : MonoBehaviour
                 // Handle task interaction
                 if (_player.collidingTask != null)
                 {
-                    _player.collidingTask.playerAttempting = null;
-                }
-
-                // Handle node interaction
-                if (_player.collidingNode != null)
-                {
-                    _player.collidingNode.Active = false;
+                    if(_player.collidingTask.playersAttempting.Contains(_player))
+                    {
+                        _player.collidingTask.playersAttempting.Remove(_player);
+                    }
                 }
                 break;
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent<TaskData>(out TaskData taskData))
+        {
+            if(taskData.Active && !taskData.collidingPlayers.Contains(_player))
+            {
+                _player.collidingTask = taskData;
+                taskData.collidingPlayers.Add(_player);
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.TryGetComponent<TaskData>(out TaskData taskData))
+        {
+            _player.collidingTask = null;
+            if(taskData.collidingPlayers.Contains(_player)) 
+            { 
+                taskData.collidingPlayers.Remove(_player);
+            }
+            if(taskData.playersAttempting.Contains(_player)) 
+            { 
+                taskData.playersAttempting.Remove(_player);
             }
         }
     }

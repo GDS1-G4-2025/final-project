@@ -1,85 +1,124 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-/*
-Task Data will be attached to the object that acts as the final step in a task.
-This will be where points are allocated through. Any task that acts as a
-requirement or pre-requisite to completing the main task will not include this
-*/
 public class TaskData : MonoBehaviour
 {
-    private bool _isInteractable;
-    public bool IsInteractable{
-        get { return _isInteractable; }
-        set { _isInteractable = value; }
-    }
     public string taskName;
     public int pointAllocation;
-    public Player playerAttempting;
-
-    [SerializeField] private List<GameObject> _nodes;
-    public void AddNode(GameObject node) { _nodes.Add(node); }
-    public IReadOnlyList<GameObject> Nodes { get => _nodes; }
-
-    [SerializeField] private TaskManager _taskManager;
-    [SerializeField] private List<GameObject> _collidingPlayers;
-
-
-    private void Start()
-    {
-        _taskManager = FindAnyObjectByType<TaskManager>();
-        _taskManager.AddTask(this);
-        _collidingPlayers = new List<GameObject>();
+    [SerializeField] private GameObject _rootTask;
+    public GameObject RootTask 
+    { 
+        get { return _rootTask; } 
+    }
+    [SerializeField] private List<GameObject> _nodeTasks;
+    public IReadOnlyList<GameObject> NodeTasks 
+    { 
+        get { return _nodeTasks; } 
     }
 
-    public void TaskCompleted()
-    {
-        _taskManager.CompleteTask(this, playerAttempting);
-    }
+    public List<Player> collidingPlayers;
+    public List<Player> playersAttempting;
 
-    private void OnEnable()
+    [SerializeField] private bool _isActive;
+    public bool Active
     {
-        foreach (var node in _nodes) { node.SetActive(true); }
-    }
-
-    private void OnDisable()
-    {
-        foreach (var node in _nodes) { node.SetActive(false); }
-        foreach (var player in _collidingPlayers) { player.GetComponent<Player>().collidingTask = null; }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (!_collidingPlayers.Contains(other.gameObject))
+        get { return _isActive; }
+        set 
+        { 
+            _isActive = value; 
+            if(_isActive)
             {
-                other.gameObject.GetComponent<Player>().collidingTask = this;
-                _collidingPlayers.Add(other.gameObject);
+                //OnActivate Tasks
+            }
+            else
+            {
+                foreach(Player player in collidingPlayers)
+                {
+                    player.collidingTask = null;
+                }
+                collidingPlayers.Clear();
+                playersAttempting.Clear();
             }
         }
     }
-
-    private void OnTriggerExit(Collider other)
+    [SerializeField] private bool _isComplete;
+    public bool Complete
+    { 
+        get { return _isComplete; }
+        set { _isComplete = value; }
+    }
+    
+    void Start()
     {
-        if (other.gameObject.CompareTag("Player"))
+        if(transform.parent.parent == null)
         {
-            if(_collidingPlayers.Count > 0)
+            MapTasks(transform.parent.gameObject);
+            RootTask.GetComponent<TaskManager>().AddTask(this.gameObject);
+        }
+        Active = false;
+    }
+
+    public GameObject MapTasks(GameObject root)
+    {
+        _rootTask = root;
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            if(transform.GetChild(i).gameObject.TryGetComponent<TaskData>(out TaskData taskData))
             {
-                if (_collidingPlayers.Contains(other.gameObject))
-                {
-                    other.gameObject.GetComponent<Player>().collidingTask = null;
-                    _collidingPlayers.Remove(other.gameObject);
-                }
-            }
-            if (playerAttempting != null) 
-            {  
-                if(playerAttempting.gameObject == other.gameObject)
-                {
-                    playerAttempting = null;
-                }
+                _nodeTasks.Add(taskData.MapTasks(this.gameObject));
             }
         }
+        return this.gameObject;
+    }
+
+    public void BeginTask()
+    {
+        if(NodeTasks.Count > 0)
+        {
+            Active = false;
+            foreach(GameObject node in NodeTasks)
+            {
+                node.GetComponent<TaskData>().BeginTask();
+            }
+        }
+        else{
+            Active = true;
+        }
+    }
+
+    public void TryActivateTask()
+    {
+        foreach(GameObject node in _nodeTasks)
+        {
+            if(node.TryGetComponent<TaskData>(out TaskData nodeData))
+            { 
+                if(!nodeData.Complete){ return; }
+            }
+        }
+        foreach(GameObject node in _nodeTasks)
+        {
+            if(node.TryGetComponent<TaskData>(out TaskData nodeData))
+            { 
+                nodeData.Complete = false;
+            }
+        }
+        Active = true;
+    }
+
+    public void CompleteTask(List<Player> completingPlayers)
+    {
+        _isActive = false;
+        _isComplete = true;
+        if(RootTask.transform.parent != null)
+        {
+            RootTask.GetComponent<TaskData>().TryActivateTask();
+        }
+        else
+        {
+            RootTask.GetComponent<TaskManager>().CompleteTask(this.gameObject, completingPlayers);
+        }
+        collidingPlayers.Clear();
+        playersAttempting.Clear();
     }
 }
