@@ -30,14 +30,10 @@ public class TaskManager : MonoBehaviour
         task.GetComponent<TaskData>().BeginTask();
     }
 
-    public void CompleteTask(GameObject task, List<Player> completingPlayers)
+    public void CompleteTask(GameObject task)
     {
         _completedTasks.Add(task);
         CurrentTasks.Remove(task);
-        foreach (Player player in completingPlayers)
-        {
-            player.score.AddPoints(task.GetComponent<TaskData>().pointAllocation);
-        }
         task.GetComponent<TaskData>().Complete = false;
     }
 }

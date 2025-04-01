@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class TaskData : MonoBehaviour
 {
-    public string taskName;
-    public int pointAllocation;
-    [SerializeField] private GameObject _rootTask;
+    public string taskName; //Name of the task, appears on task list
+    public int pointAllocation; //Points allocated per task. This can be applied on any task at any level
+    [SerializeField] private GameObject _rootTask; //Parent Task or Task Manager
     public GameObject RootTask 
     { 
         get { return _rootTask; } 
     }
-    [SerializeField] private List<GameObject> _nodeTasks;
+    [SerializeField] private List<GameObject> _nodeTasks; //Child tasks, the very beginning of a task will have no NodeTasks
     public IReadOnlyList<GameObject> NodeTasks 
     { 
         get { return _nodeTasks; } 
     }
 
-    public List<Player> collidingPlayers;
-    public List<Player> playersAttempting;
+    public List<Player> collidingPlayers; //A list of the players currently colliding with the task
+    public List<Player> playersAttempting; //A list of the players currently attempting the task
 
-    [SerializeField] private bool _isActive;
+    [SerializeField] private bool _isActive; //Is this task segment active? all prerequisite tasks completed
     public bool Active
     {
         get { return _isActive; }
@@ -29,7 +29,14 @@ public class TaskData : MonoBehaviour
             _isActive = value; 
             if(_isActive)
             {
-                //OnActivate Tasks
+                /*
+                This section will contain functions attributed to unique task types
+                to be run as soon as the task is activated.
+
+                Example:
+                Payload will automatically complete on activation as there's no task
+                until PayloadReceiver
+                */
             }
             else
             {
@@ -42,14 +49,14 @@ public class TaskData : MonoBehaviour
             }
         }
     }
-    [SerializeField] private bool _isComplete;
+    [SerializeField] private bool _isComplete; //Has this task been completed? Checked in parent task to determine if it can activate
     public bool Complete
     { 
         get { return _isComplete; }
         set { _isComplete = value; }
     }
     
-    void Start()
+    void Awake()
     {
         if(transform.parent.parent == null)
         {
@@ -59,7 +66,7 @@ public class TaskData : MonoBehaviour
         Active = false;
     }
 
-    public GameObject MapTasks(GameObject root)
+    public GameObject MapTasks(GameObject root) //Only called on Awake, Recursive code to map out all root/node tasks
     {
         _rootTask = root;
         for(int i = 0; i < transform.childCount; i++)
@@ -72,7 +79,7 @@ public class TaskData : MonoBehaviour
         return this.gameObject;
     }
 
-    public void BeginTask()
+    public void BeginTask() //Called when a task first moves into current task list. Finds the lowest children and begins there
     {
         if(NodeTasks.Count > 0)
         {
@@ -87,7 +94,7 @@ public class TaskData : MonoBehaviour
         }
     }
 
-    public void TryActivateTask()
+    public void TryActivateTask() //Checks if all nodes are complete, then activates task and resets nodes
     {
         foreach(GameObject node in _nodeTasks)
         {
@@ -106,7 +113,7 @@ public class TaskData : MonoBehaviour
         Active = true;
     }
 
-    public void CompleteTask(List<Player> completingPlayers)
+    public void CompleteTask(List<Player> completingPlayers) //Awards points, resets task, and moves to next task up
     {
         _isActive = false;
         _isComplete = true;
@@ -116,7 +123,11 @@ public class TaskData : MonoBehaviour
         }
         else
         {
-            RootTask.GetComponent<TaskManager>().CompleteTask(this.gameObject, completingPlayers);
+            RootTask.GetComponent<TaskManager>().CompleteTask(this.gameObject);
+        }
+        foreach(Player player in playersAttempting)
+        {
+            player.score.AddPoints(pointAllocation);
         }
         collidingPlayers.Clear();
         playersAttempting.Clear();
