@@ -1,26 +1,28 @@
 using UnityEngine;
 
+[RequireComponent(typeof(TaskData))]
 public class PayloadReceiver : MonoBehaviour
 {
     [SerializeField] private TaskData _taskData;
     [SerializeField] private int _receivedCount;
-    void Start()
+
+    private void Start()
     {
-        _taskData = this.gameObject.GetComponent<TaskData>();
+        _taskData = gameObject.GetComponent<TaskData>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if(_taskData.GetTryComplete() != null){
-            foreach(GameObject node in _taskData.GetNodes()){
-                if(node == _taskData.GetTryComplete().GetComponent<PlayerData>().GetHeldObject()){
+        if(_taskData.playerAttempting){
+            foreach(var node in _taskData.Nodes){
+                if(node == _taskData.playerAttempting.hold.heldObject?.gameObject){
                     _receivedCount += 1;
-                    node.transform.parent = this.transform;
+                    node.transform.parent = transform;
                     node.SetActive(false);
-                    _taskData.GetTryComplete().GetComponent<PlayerData>().SetHeldObject(null);
+                    _taskData.playerAttempting.hold.heldObject = null;
                 }
             }
         }
-        if(_receivedCount >= _taskData.GetNodes().Count){ _taskData.TaskCompleted(); }
+        if(_receivedCount >= _taskData.Nodes.Count){ _taskData.TaskCompleted(); }
     }
 }

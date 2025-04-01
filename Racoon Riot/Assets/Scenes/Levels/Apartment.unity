@@ -631,9 +631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableNode: 0
+  _isInteractable: 0
   _collidingPlayers: []
-  _parentTask: {fileID: 519700821}
+  parentTask: {fileID: 519700823}
 --- !u!114 &98431544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,6 +646,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &98431545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98431542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
 --- !u!43 &115276868
 Mesh:
   m_ObjectHideFlags: 0
@@ -859,6 +872,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1295886073521851764, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       propertyPath: m_Name
       value: PickUpObject (1)
@@ -873,6 +890,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2112780236}
+    - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2112780238}
   m_SourcePrefab: {fileID: 100100000, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
 --- !u!1001 &203250170
 PrefabInstance:
@@ -925,6 +945,10 @@ PrefabInstance:
     - target: {fileID: 4300357700112239759, guid: 9a57577d701c9be47b7f896f10c6c81c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187349175954474392, guid: 9a57577d701c9be47b7f896f10c6c81c, type: 3}
+      propertyPath: numberOfConcurrentTasks
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8187349175954474392, guid: 9a57577d701c9be47b7f896f10c6c81c, type: 3}
       propertyPath: _numberOfConcurrentTasks
@@ -990,6 +1014,10 @@ PrefabInstance:
     - target: {fileID: 8452871104447914948, guid: 5487e67b337bcd944941c86cead53b97, type: 3}
       propertyPath: m_Name
       value: PayloadReceiver
+      objectReference: {fileID: 0}
+    - target: {fileID: 9057524944707563006, guid: 5487e67b337bcd944941c86cead53b97, type: 3}
+      propertyPath: taskName
+      value: Collect Cubes in Bucket
       objectReference: {fileID: 0}
     - target: {fileID: 9057524944707563006, guid: 5487e67b337bcd944941c86cead53b97, type: 3}
       propertyPath: _taskName
@@ -1854,9 +1882,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableNode: 0
+  _isInteractable: 0
   _collidingPlayers: []
-  _parentTask: {fileID: 519700821}
+  parentTask: {fileID: 519700823}
 --- !u!114 &243117688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1869,6 +1897,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &243117689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243117686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
 --- !u!1001 &248715831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1937,6 +1978,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f1d360df4313ddf4780767552f757af7, type: 2}
+    - target: {fileID: 7225790316820098281, guid: 17b64ba5bf3047f4bad8ebdc1578d160, type: 3}
+      propertyPath: taskName
+      value: Scratch Chair
+      objectReference: {fileID: 0}
     - target: {fileID: 7225790316820098281, guid: 17b64ba5bf3047f4bad8ebdc1578d160, type: 3}
       propertyPath: _taskName
       value: Scratch Chair
@@ -3077,6 +3122,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1295886073521851764, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       propertyPath: m_Name
       value: PickUpObject (5)
@@ -3091,12 +3140,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1078191686}
+    - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1078191688}
   m_SourcePrefab: {fileID: 100100000, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
---- !u!1 &519700821 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8452871104447914948, guid: 5487e67b337bcd944941c86cead53b97, type: 3}
+--- !u!114 &519700823 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9057524944707563006, guid: 5487e67b337bcd944941c86cead53b97, type: 3}
   m_PrefabInstance: {fileID: 235061059}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad15f2a28b048d849862da558c812fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &528513619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3145,6 +3203,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1295886073521851764, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       propertyPath: m_Name
       value: PickUpObject (3)
@@ -3159,6 +3221,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1101911110}
+    - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1101911112}
   m_SourcePrefab: {fileID: 100100000, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
 --- !u!1 &555377617
 GameObject:
@@ -7310,9 +7375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableNode: 0
+  _isInteractable: 0
   _collidingPlayers: []
-  _parentTask: {fileID: 519700821}
+  parentTask: {fileID: 519700823}
 --- !u!114 &583064602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7325,6 +7390,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &583064603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583064600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
 --- !u!43 &640139868
 Mesh:
   m_ObjectHideFlags: 0
@@ -7820,17 +7898,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &791747872 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9055950065887740421, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
-  m_PrefabInstance: {fileID: 1892584477}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &809269289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7879,6 +7946,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1295886073521851764, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       propertyPath: m_Name
       value: PickUpObject (6)
@@ -7893,6 +7964,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 243117687}
+    - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 243117689}
   m_SourcePrefab: {fileID: 100100000, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
 --- !u!1001 &957640736
 PrefabInstance:
@@ -7902,10 +7976,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 501603031113023156, guid: 097989eea8af26548841dff483d2eed4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.53
-      objectReference: {fileID: 0}
     - target: {fileID: 2747638249629314894, guid: 097989eea8af26548841dff483d2eed4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7946,22 +8016,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2782572108494978554, guid: 097989eea8af26548841dff483d2eed4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 14.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 3851169004510094410, guid: 097989eea8af26548841dff483d2eed4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709936931364881427, guid: 097989eea8af26548841dff483d2eed4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709936931364881427, guid: 097989eea8af26548841dff483d2eed4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.99
-      objectReference: {fileID: 0}
     - target: {fileID: 5993234567327348029, guid: 097989eea8af26548841dff483d2eed4, type: 3}
       propertyPath: m_Name
       value: PlayerManager
@@ -7971,17 +8025,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 097989eea8af26548841dff483d2eed4, type: 3}
---- !u!114 &1063732870 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6245106484888078813, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
-  m_PrefabInstance: {fileID: 1892584477}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1078191685 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
@@ -7999,9 +8042,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableNode: 0
+  _isInteractable: 0
   _collidingPlayers: []
-  _parentTask: {fileID: 519700821}
+  parentTask: {fileID: 519700823}
 --- !u!114 &1078191687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8014,6 +8057,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1078191688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078191685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
 --- !u!1 &1101911109 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
@@ -8031,9 +8087,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableNode: 0
+  _isInteractable: 0
   _collidingPlayers: []
-  _parentTask: {fileID: 519700821}
+  parentTask: {fileID: 519700823}
 --- !u!114 &1101911111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8046,28 +8102,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1141073799 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8532044108166722900, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
-  m_PrefabInstance: {fileID: 1892584477}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1141073804
+--- !u!114 &1101911112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141073799}
+  m_GameObject: {fileID: 1101911109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d8c25da23e116b48b970b254ce6e537, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listItems:
-  - {fileID: 1063732870}
-  - {fileID: 1735174955}
-  - {fileID: 791747872}
-  - {fileID: 1741288261}
+  isInteractable: 1
 --- !u!1 &1162846928
 GameObject:
   m_ObjectHideFlags: 0
@@ -9407,6 +9454,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: f1d360df4313ddf4780767552f757af7, type: 2}
     - target: {fileID: 7225790316820098281, guid: 17b64ba5bf3047f4bad8ebdc1578d160, type: 3}
+      propertyPath: taskName
+      value: Knock Glass off Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225790316820098281, guid: 17b64ba5bf3047f4bad8ebdc1578d160, type: 3}
       propertyPath: _taskName
       value: Knock Glass off Table
       objectReference: {fileID: 0}
@@ -10490,6 +10541,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1295886073521851764, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       propertyPath: m_Name
       value: PickUpObject (2)
@@ -10504,6 +10559,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 583064601}
+    - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 583064603}
   m_SourcePrefab: {fileID: 100100000, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
 --- !u!1001 &1335209151
 PrefabInstance:
@@ -10553,6 +10611,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1295886073521851764, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       propertyPath: m_Name
       value: PickUpObject (4)
@@ -10567,6 +10629,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1711528210}
+    - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1711528212}
   m_SourcePrefab: {fileID: 100100000, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
 --- !u!1 &1459963021
 GameObject:
@@ -15343,6 +15408,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: f1d360df4313ddf4780767552f757af7, type: 2}
     - target: {fileID: 7225790316820098281, guid: 17b64ba5bf3047f4bad8ebdc1578d160, type: 3}
+      propertyPath: taskName
+      value: Scratch Couch
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225790316820098281, guid: 17b64ba5bf3047f4bad8ebdc1578d160, type: 3}
       propertyPath: _taskName
       value: Scratch Couch
       objectReference: {fileID: 0}
@@ -15533,9 +15602,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableNode: 0
+  _isInteractable: 0
   _collidingPlayers: []
-  _parentTask: {fileID: 519700821}
+  parentTask: {fileID: 519700823}
 --- !u!114 &1711528211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15548,28 +15617,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1735174955 stripped
+--- !u!114 &1711528212
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5283561075008890357, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
-  m_PrefabInstance: {fileID: 1892584477}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1711528209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1741288261 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8967526524600912965, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
-  m_PrefabInstance: {fileID: 1892584477}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isInteractable: 1
 --- !u!1001 &1745198959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15618,6 +15678,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1295886073521851764, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       propertyPath: m_Name
       value: PickUpObject
@@ -15632,6 +15696,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 98431543}
+    - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 98431545}
   m_SourcePrefab: {fileID: 100100000, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
 --- !u!1 &1749678092 stripped
 GameObject:
@@ -15650,9 +15717,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableNode: 0
+  _isInteractable: 0
   _collidingPlayers: []
-  _parentTask: {fileID: 519700821}
+  parentTask: {fileID: 519700823}
 --- !u!114 &1749678094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15665,6 +15732,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1749678095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749678092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
 --- !u!1001 &1778320784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15734,6 +15814,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: f1d360df4313ddf4780767552f757af7, type: 2}
     - target: {fileID: 7225790316820098281, guid: 17b64ba5bf3047f4bad8ebdc1578d160, type: 3}
+      propertyPath: taskName
+      value: Clear Archway
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225790316820098281, guid: 17b64ba5bf3047f4bad8ebdc1578d160, type: 3}
       propertyPath: _taskName
       value: Clear Archway
       objectReference: {fileID: 0}
@@ -15790,6 +15874,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1295886073521851764, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       propertyPath: m_Name
       value: PickUpObject (8)
@@ -15804,6 +15892,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1932179854}
+    - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1932179856}
   m_SourcePrefab: {fileID: 100100000, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
 --- !u!1 &1869309480
 GameObject:
@@ -16811,6 +16902,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5034720273036026323, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8532044108166722900, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
       propertyPath: m_Name
       value: Task List
@@ -16818,10 +16913,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8532044108166722900, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1141073804}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
 --- !u!43 &1900367740
 Mesh:
@@ -17170,9 +17262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableNode: 0
+  _isInteractable: 0
   _collidingPlayers: []
-  _parentTask: {fileID: 519700821}
+  parentTask: {fileID: 519700823}
 --- !u!114 &1932179855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17185,6 +17277,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1932179856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932179853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
 --- !u!1 &1948779429
 GameObject:
   m_ObjectHideFlags: 0
@@ -17859,6 +17964,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1295886073521851764, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       propertyPath: m_Name
       value: PickUpObject (7)
@@ -17873,6 +17982,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1749678093}
+    - targetCorrespondingSourceObject: {fileID: 8671789621161052776, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1749678095}
   m_SourcePrefab: {fileID: 100100000, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
 --- !u!1 &2112780235 stripped
 GameObject:
@@ -17891,9 +18003,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableNode: 0
+  _isInteractable: 0
   _collidingPlayers: []
-  _parentTask: {fileID: 519700821}
+  parentTask: {fileID: 519700823}
 --- !u!114 &2112780237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17906,6 +18018,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2112780238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112780235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
 --- !u!1 &2123411800
 GameObject:
   m_ObjectHideFlags: 0

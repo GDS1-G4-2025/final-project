@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4226277618258820344}
   - component: {fileID: 3546891487581645450}
   - component: {fileID: 723836286920761089}
+  - component: {fileID: 8813517720414664082}
+  - component: {fileID: -5697125409019543693}
   m_Layer: 0
   m_Name: Payload
   m_TagString: PickUpObject
@@ -103,7 +105,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -121,6 +123,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableNode: 0
+  _isInteractable: 0
   _collidingPlayers: []
-  _parentTask: {fileID: 0}
+  parentTask: {fileID: 0}
+--- !u!54 &8813517720414664082
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003339734239686938}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-5697125409019543693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003339734239686938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1

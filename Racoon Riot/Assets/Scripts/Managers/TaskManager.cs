@@ -4,31 +4,36 @@ using System.Collections.Generic;
 public class TaskManager : MonoBehaviour
 {
     [SerializeField] private int _numberOfConcurrentTasks;
-    [SerializeField] private List<GameObject> _upcomingTasks;
-    [SerializeField] private List<GameObject> _currentTasks;
-    public List<GameObject> GetCurrentTasks(){ return _currentTasks; }
-    [SerializeField] private List<GameObject> _completedTasks;
+    [SerializeField] private List<TaskData> _upcomingTasks;
+    [SerializeField] private List<TaskData> _completedTasks;
 
-    public void FixedUpdate(){
-        if(_currentTasks.Count < _numberOfConcurrentTasks && _upcomingTasks.Count > 0){
-            MoveTaskToCurrent(_upcomingTasks[Random.Range(0, _upcomingTasks.Count-1)]);
+    public List<TaskData> CurrentTasks { get; } = new List<TaskData>();
+
+    public void Update()
+    {
+        if (CurrentTasks.Count < _numberOfConcurrentTasks && _upcomingTasks.Count > 0)
+        {
+            MoveTaskToCurrent(_upcomingTasks[Random.Range(0, _upcomingTasks.Count - 1)]);
         }
     }
 
-    public void AddTask(GameObject task){
+    public void AddTask(TaskData task)
+    {
         _upcomingTasks.Add(task);
     }
 
-    public void MoveTaskToCurrent(GameObject task){
-        _currentTasks.Add(task);
+    private void MoveTaskToCurrent(TaskData task)
+    {
+        CurrentTasks.Add(task);
         _upcomingTasks.Remove(task);
-        task.SetActive(true);
+        task.gameObject.SetActive(true);
     }
 
-    public void CompleteTask(GameObject task, GameObject player){
+    public void CompleteTask(TaskData task, Player player)
+    {
         _completedTasks.Add(task);
-        _currentTasks.Remove(task);
-        player.GetComponent<PlayerData>().AddPoints(task.GetComponent<TaskData>().GetPointAllocation());
-        task.SetActive(false);
+        CurrentTasks.Remove(task);
+        player.score.AddPoints(task.pointAllocation);
+        task.gameObject.SetActive(false);
     }
 }

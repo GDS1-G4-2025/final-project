@@ -3,16 +3,15 @@ using UnityEngine.InputSystem;
 
 public class CameraMovement : MonoBehaviour
 {
-    public float lookAtIntensity = 3.0f;
-    public float smoothSpeed = 10f; // Adjust to control smoothness
+    [SerializeField] private float _lookAtIntensity = 3.0f;
+    [SerializeField] private float _smoothSpeed = 10f; // Adjust to control smoothness
+    [SerializeField] private GameObject _camera, _locRef, _rotRef;
 
     private Vector2 _lookAtInput;
     private Vector3 _lookingTarget;
     private Vector2 _smoothedInput = Vector2.zero;
 
-    [SerializeField] private GameObject _camera, _locRef, _rotRef;
-
-    void Update()
+    private void Update()
     {
         // Camera position logic
         if (Physics.Linecast(transform.position, _locRef.transform.position, out var hit))
@@ -29,7 +28,7 @@ public class CameraMovement : MonoBehaviour
         }
 
         // Input smoothing
-        _smoothedInput = Vector2.Lerp(_smoothedInput, _lookAtInput, Time.deltaTime * smoothSpeed);
+        _smoothedInput = Vector2.Lerp(_smoothedInput, _lookAtInput, Time.deltaTime * _smoothSpeed);
 
         // Input magnitude + non-linear adjustment
         var normalizedInput = _smoothedInput.magnitude > 1 ? _smoothedInput.normalized : _smoothedInput;
@@ -43,8 +42,8 @@ public class CameraMovement : MonoBehaviour
 
         // Calculate the look target relative to the player's orientation
         _lookingTarget = _rotRef.transform.position
-            + rightDir * (lookAtIntensity * adjustedInput.x)
-            + upDir * (lookAtIntensity * adjustedInput.y);
+            + rightDir * (_lookAtIntensity * adjustedInput.x)
+            + upDir * (_lookAtIntensity * adjustedInput.y);
 
         _camera.transform.LookAt(_lookingTarget);
     }

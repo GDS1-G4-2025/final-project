@@ -1,18 +1,18 @@
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(TaskData))]
 public class SingleComponentTerminal : MonoBehaviour
 {
     [SerializeField] private TaskData _taskData;
-    void Start()
-    {
-        _taskData = this.gameObject.GetComponent<TaskData>();
 
+    private void Start()
+    {
+        _taskData = gameObject.GetComponent<TaskData>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if(_taskData.GetTryComplete() != null){
+        if(_taskData.playerAttempting){
             _taskData.TaskCompleted();
         }
     }
