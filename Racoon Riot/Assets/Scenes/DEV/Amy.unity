@@ -755,19 +755,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 663259388419450612, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_Name
-      value: Raccoon-Anims
+      value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5791426454753261805, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: _heldItemHandler
-      value: 
-      objectReference: {fileID: 1690175687456710569}
     - target: {fileID: 7081887502781210198, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7081887502781210198, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 7081887502781210198, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -806,11 +802,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
---- !u!4 &1690175687456710569 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7491580088227298890, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-  m_PrefabInstance: {fileID: 1690175687456710568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
