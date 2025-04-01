@@ -113,7 +113,7 @@ public class TaskData : MonoBehaviour
         Active = true;
     }
 
-    public void CompleteTask(List<Player> completingPlayers) //Awards points, resets task, and moves to next task up
+    public void CompleteTask() //Awards points, resets task, and moves to next task up
     {
         _isActive = false;
         _isComplete = true;
