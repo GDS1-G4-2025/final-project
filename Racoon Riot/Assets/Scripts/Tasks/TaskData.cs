@@ -37,6 +37,7 @@ public class TaskData : MonoBehaviour
                 Payload will automatically complete on activation as there's no task
                 until PayloadReceiver
                 */
+                if(TryGetComponent<Payload>(out Payload taskHandle)){ taskHandle.OnActivate();}
             }
             else
             {
@@ -111,6 +112,22 @@ public class TaskData : MonoBehaviour
             }
         }
         Active = true;
+    }
+
+    public bool PlayerAttempt(Player player)
+    {
+        if(TryGetComponent<SingleComponentTerminal>(out SingleComponentTerminal taskHandle)){ return taskHandle.AttemptTask();}
+        //PERFORM TASK GOES HERE
+        return true;
+    }
+
+    public bool PlayerAttemptCancel(Player player)
+    {
+        if(player == null || !playersAttempting.Contains(player)){ return false; }
+        playersAttempting.Remove(player);
+
+        //CANCEL TASK GOES HERE
+        return true;
     }
 
     public void CompleteTask() //Awards points, resets task, and moves to next task up

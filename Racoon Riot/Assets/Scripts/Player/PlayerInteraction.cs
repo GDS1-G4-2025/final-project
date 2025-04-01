@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,12 +26,14 @@ public class PlayerInteraction : MonoBehaviour
                     if(_player.hold.heldObject == null)
                     {
                         _player.collidingTask.playersAttempting.Add(_player);
+                        _player.collidingTask.PlayerAttempt(_player);
                     }
                     else if(_player.hold.heldObject.gameObject.TryGetComponent<TaskData>(out TaskData taskData))
                     {
                         if(taskData.RootTask == _player.collidingTask.gameObject)
                         {
                             _player.collidingTask.playersAttempting.Add(_player);
+                            _player.collidingTask.PlayerAttempt(_player);
                         }
                     }
                 }
@@ -45,6 +48,7 @@ public class PlayerInteraction : MonoBehaviour
                     if(_player.collidingTask.playersAttempting.Contains(_player))
                     {
                         _player.collidingTask.playersAttempting.Remove(_player);
+                        _player.collidingTask.PlayerAttemptCancel(_player);
                     }
                 }
                 break;
@@ -73,9 +77,10 @@ public class PlayerInteraction : MonoBehaviour
             { 
                 taskData.collidingPlayers.Remove(_player);
             }
-            if(taskData.playersAttempting.Contains(_player)) 
-            { 
+            if(taskData.playersAttempting.Contains(_player))
+            {
                 taskData.playersAttempting.Remove(_player);
+                _player.collidingTask.PlayerAttemptCancel(_player);
             }
         }
     }

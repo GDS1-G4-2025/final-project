@@ -10,10 +10,9 @@ public class SingleComponentTerminal : MonoBehaviour
         _taskData = gameObject.GetComponent<TaskData>();
     }
 
-    private void FixedUpdate()
+    public bool AttemptTask()
     {
-        if(_taskData.playersAttempting.Count > 0){
-            _taskData.CompleteTask();
-        }
+        _taskData.CompleteTask();
+        return true;
     }
 }
