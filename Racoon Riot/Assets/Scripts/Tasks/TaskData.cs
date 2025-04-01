@@ -9,6 +9,11 @@ requirement or pre-requisite to completing the main task will not include this
 */
 public class TaskData : MonoBehaviour
 {
+    private bool _isInteractable;
+    public bool IsInteractable{
+        get { return _isInteractable; }
+        set { _isInteractable = value; }
+    }
     public string taskName;
     public int pointAllocation;
     public Player playerAttempting;
@@ -26,7 +31,6 @@ public class TaskData : MonoBehaviour
         _taskManager = FindAnyObjectByType<TaskManager>();
         _taskManager.AddTask(this);
         _collidingPlayers = new List<GameObject>();
-        gameObject.SetActive(false);
     }
 
     public void TaskCompleted()

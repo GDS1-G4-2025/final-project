@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class NodeData : MonoBehaviour
 {
-    [SerializeField] private bool _isInteractable;
+    private bool _isInteractable;
+    public bool IsInteractable{
+        get { return _isInteractable; }
+        set { _isInteractable = value; }
+    }
+    [SerializeField] private bool _isPickupable;
     [SerializeField] private List<GameObject> _collidingPlayers;
     [SerializeField] public TaskData parentTask;
 
@@ -24,7 +29,7 @@ public class NodeData : MonoBehaviour
     private void Start()
     {
         parentTask.AddNode(gameObject);
-        gameObject.SetActive(false);
+        _isInteractable = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,7 +38,7 @@ public class NodeData : MonoBehaviour
         {
             if (!_collidingPlayers.Contains(other.gameObject))
             {
-                if (_isInteractable && other.gameObject.TryGetComponent(out Player player))
+                if (_isPickupable && other.gameObject.TryGetComponent(out Player player))
                 {
                     if (player.collidingNode == null)
                         player.collidingNode = this;
@@ -49,7 +54,7 @@ public class NodeData : MonoBehaviour
         {
             if (_collidingPlayers.Contains(other.gameObject))
             {
-                if (_isInteractable && other.gameObject.TryGetComponent(out Player player))
+                if (_isPickupable && other.gameObject.TryGetComponent(out Player player))
                 {
                     if (player.collidingNode == this)
                         player.collidingNode = null;
