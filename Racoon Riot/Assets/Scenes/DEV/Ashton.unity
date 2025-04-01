@@ -124,6 +124,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8452871104447914948, guid: 5487e67b337bcd944941c86cead53b97, type: 3}
   m_PrefabInstance: {fileID: 238933293}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &73054625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9057524944707563006, guid: 5487e67b337bcd944941c86cead53b97, type: 3}
+  m_PrefabInstance: {fileID: 238933293}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73054624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad15f2a28b048d849862da558c812fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &151746436
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +147,8 @@ GameObject:
   - component: {fileID: 151746439}
   - component: {fileID: 151746438}
   - component: {fileID: 151746437}
+  - component: {fileID: 151746442}
+  - component: {fileID: 151746441}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: PickUpObject
@@ -232,6 +245,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &151746441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151746436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eab92e3eb3784d84b5c818e9e4dc838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+  _throwForce: 10
+--- !u!54 &151746442
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151746436}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &238933293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -572,9 +626,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5742571051825903596, guid: 9b2f46c0ce680c848b3f5a66cc2f56b1, type: 3}
+      propertyPath: parentTask
+      value: 
+      objectReference: {fileID: 1517183662}
+    - target: {fileID: 5742571051825903596, guid: 9b2f46c0ce680c848b3f5a66cc2f56b1, type: 3}
       propertyPath: _parentTask
       value: 
       objectReference: {fileID: 1517183660}
+    - target: {fileID: 5742571051825903596, guid: 9b2f46c0ce680c848b3f5a66cc2f56b1, type: 3}
+      propertyPath: _isInteractable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7505712370874974724, guid: 9b2f46c0ce680c848b3f5a66cc2f56b1, type: 3}
       propertyPath: m_Name
       value: SimultaneousTransmitter (1)
@@ -822,6 +884,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 723836286920761089, guid: 233ed76734a505a45837a7dacbce6ed9, type: 3}
+      propertyPath: parentTask
+      value: 
+      objectReference: {fileID: 73054625}
+    - target: {fileID: 723836286920761089, guid: 233ed76734a505a45837a7dacbce6ed9, type: 3}
       propertyPath: _parentTask
       value: 
       objectReference: {fileID: 73054624}
@@ -891,6 +957,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 139814076992833196, guid: 9557eb22c0c37e24da1f1d3fb1bff9ea, type: 3}
   m_PrefabInstance: {fileID: 972748523}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1517183662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6603514264351545695, guid: 9557eb22c0c37e24da1f1d3fb1bff9ea, type: 3}
+  m_PrefabInstance: {fileID: 972748523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517183660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad15f2a28b048d849862da558c812fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1651249985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -899,6 +976,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 723836286920761089, guid: 233ed76734a505a45837a7dacbce6ed9, type: 3}
+      propertyPath: parentTask
+      value: 
+      objectReference: {fileID: 73054625}
     - target: {fileID: 723836286920761089, guid: 233ed76734a505a45837a7dacbce6ed9, type: 3}
       propertyPath: _parentTask
       value: 
@@ -976,6 +1057,8 @@ GameObject:
   - component: {fileID: 1920912932}
   - component: {fileID: 1920912931}
   - component: {fileID: 1920912930}
+  - component: {fileID: 1920912935}
+  - component: {fileID: 1920912934}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: PickUpObject
@@ -1072,6 +1155,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1920912934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920912929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+--- !u!54 &1920912935
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920912929}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2063503835
 PrefabInstance:
   m_ObjectHideFlags: 0

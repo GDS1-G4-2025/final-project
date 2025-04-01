@@ -22,6 +22,7 @@ public class PlayerHoldObject : MonoBehaviour
 
         heldObject = _pickUpTarget;
         heldObject.AttachTo(_heldItemHandler);
+        heldObject.GetComponent<Collider>().enabled = false;
         _pickUpTarget = null;
     }
 
