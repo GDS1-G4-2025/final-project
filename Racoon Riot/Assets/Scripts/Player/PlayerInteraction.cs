@@ -79,8 +79,8 @@ public class PlayerInteraction : MonoBehaviour
             }
             if(taskData.playersAttempting.Contains(_player))
             {
+                taskData.PlayerAttemptCancel(_player);
                 taskData.playersAttempting.Remove(_player);
-                _player.collidingTask.PlayerAttemptCancel(_player);
             }
         }
     }

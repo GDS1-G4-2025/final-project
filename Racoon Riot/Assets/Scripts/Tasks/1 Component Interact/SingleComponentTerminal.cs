@@ -12,7 +12,7 @@ public class SingleComponentTerminal : MonoBehaviour
 
     public bool AttemptTask()
     {
-        _taskData.CompleteTask();
+        _taskData.CompleteTask(_taskData.playersAttempting);
         return true;
     }
 }

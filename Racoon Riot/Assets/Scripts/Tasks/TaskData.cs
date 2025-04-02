@@ -77,6 +77,10 @@ public class TaskData : MonoBehaviour
                 _nodeTasks.Add(taskData.MapTasks(this.gameObject));
             }
         }
+        /*
+        This section can be used for extra mapping functionality, like mapping payloads that won't stay parented.
+        */
+        GetComponent<Payload>()?.OnMap(this);
         return this.gameObject;
     }
 
@@ -116,9 +120,10 @@ public class TaskData : MonoBehaviour
 
     public bool PlayerAttempt(Player player)
     {
-        if(TryGetComponent<SingleComponentTerminal>(out SingleComponentTerminal taskHandle)){ return taskHandle.AttemptTask();}
+        if(TryGetComponent<SingleComponentTerminal>(out SingleComponentTerminal singleComp)){ return singleComp.AttemptTask();}
+        if(TryGetComponent<PayloadReceiver>(out PayloadReceiver payloadRec)){ return payloadRec.AttemptTask(playersAttempting);}
         //PERFORM TASK GOES HERE
-        return true;
+        return false;
     }
 
     public bool PlayerAttemptCancel(Player player)
@@ -130,7 +135,7 @@ public class TaskData : MonoBehaviour
         return true;
     }
 
-    public void CompleteTask() //Awards points, resets task, and moves to next task up
+    public void CompleteTask(List<Player> completingPlayers) //Awards points, resets task, and moves to next task up
     {
         _isActive = false;
         _isComplete = true;
@@ -142,11 +147,25 @@ public class TaskData : MonoBehaviour
         {
             RootTask.GetComponent<TaskManager>().CompleteTask(this.gameObject);
         }
-        foreach(Player player in playersAttempting)
+        if(completingPlayers != null)
         {
-            player.score.AddPoints(pointAllocation);
+            foreach(Player player in completingPlayers)
+            {
+                player.score.AddPoints(pointAllocation);
+            }
         }
         collidingPlayers.Clear();
         playersAttempting.Clear();
     }
 }
+
+//Future Use Resetting  payloadReceiver
+/*
+    if(TryGetComponent<PayloadReceiver>(out PayloadReceiver payloadReceiver))
+    {
+        foreach(GameObject node in NodeTasks)
+        {
+            node.GetComponent<Payload>()?.OnMap(node.GetComponent<TaskData>());
+        }
+    }
+*/
