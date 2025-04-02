@@ -218,9 +218,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Attack[/DualSenseGamepadHID/buttonWest,/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5791426454753261805}
-        m_TargetAssemblyTypeName: PickUp, Assembly-CSharp
-        m_MethodName: PickUpObject
+      - m_Target: {fileID: 6549571210748212936}
+        m_TargetAssemblyTypeName: PlayerInteract, Assembly-CSharp
+        m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -230,9 +230,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6549571210748212936}
-        m_TargetAssemblyTypeName: PlayerInteract, Assembly-CSharp
-        m_MethodName: OnInteract
+      - m_Target: {fileID: 5791426454753261805}
+        m_TargetAssemblyTypeName: PlayerPickupThrow, Assembly-CSharp
+        m_MethodName: OnObjectInteract
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heldObject: {fileID: 0}
   _pickUpTarget: {fileID: 0}
-  _heldItemHandler: {fileID: 4580722346766851041}
+  _itemHolder: {fileID: 4580722346766851041}
 --- !u!114 &6549571210748212936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1581,7 +1581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7491580088227298890}
   m_Layer: 0
-  m_Name: PickUpHandler
+  m_Name: ItemPickUpHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

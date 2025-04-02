@@ -5,7 +5,7 @@ public class Pickupable : Interactable
 {
     protected Rigidbody _rb;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _rb = GetComponent<Rigidbody>();
     }

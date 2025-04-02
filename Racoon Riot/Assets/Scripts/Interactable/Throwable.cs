@@ -8,8 +8,9 @@ public class Throwable : Pickupable
 
     private Collider _col;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _col = GetComponent<Collider>();
     }
 
