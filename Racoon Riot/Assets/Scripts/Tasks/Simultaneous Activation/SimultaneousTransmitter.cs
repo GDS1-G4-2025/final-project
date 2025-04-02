@@ -1,29 +1,29 @@
-// using UnityEngine;
+using UnityEngine;
 
-// [RequireComponent(typeof(NodeData))]
-// public class SimultaneousTransmitter : MonoBehaviour
-// {
-//     [SerializeField] private bool _nodeActive;
-//     [SerializeField] private NodeData _nodeData;
-//     private SimultaneousReceiver _simultaneousReceiver;
+[RequireComponent(typeof(TaskData))]
+public class SimultaneousTransmitter : MonoBehaviour
+{
+    [SerializeField] private TaskData _taskData;
 
-//     private void Start()
-//     {
-//         _nodeData = gameObject.GetComponent<NodeData>();
-//         _simultaneousReceiver = _nodeData.parentTask.GetComponent<SimultaneousReceiver>();
-//     }
+    private void Start()
+    {
+        _taskData = gameObject.GetComponent<TaskData>();
+    }
 
-//     public void OnNodeStateChanged(bool isActive)
-//     {
-//         if (isActive && !_nodeActive)
-//         {
-//             _simultaneousReceiver?.AdjustActiveNodes(+1);
-//             _nodeActive = true;
-//         }
-//         else if (!isActive && _nodeActive)
-//         {
-//             _simultaneousReceiver?.AdjustActiveNodes(-1);
-//             _nodeActive = false;
-//         }
-//     }
-// }
+    public void OnMap(TaskData taskData)
+    {
+        taskData.RootTask.GetComponent<SimultaneousReceiver>().AddTransmitter(this);
+    }
+
+    public void AttemptTask()
+    {
+        _taskData.Complete = true;
+        _taskData.RootTask.GetComponent<SimultaneousReceiver>().CheckLocked();
+    }
+
+    public void AttemptTaskCancel()
+    {
+        Debug.Log("Reaching3");
+        _taskData.Complete = false;
+    }
+}

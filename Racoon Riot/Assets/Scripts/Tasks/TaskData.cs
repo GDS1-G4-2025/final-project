@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -81,6 +82,7 @@ public class TaskData : MonoBehaviour
         This section can be used for extra mapping functionality, like mapping payloads that won't stay parented.
         */
         GetComponent<Payload>()?.OnMap(this);
+        GetComponent<SimultaneousTransmitter>()?.OnMap(this);
         return this.gameObject;
     }
 
@@ -120,18 +122,23 @@ public class TaskData : MonoBehaviour
 
     public bool PlayerAttempt(Player player)
     {
-        if(TryGetComponent<SingleComponentTerminal>(out SingleComponentTerminal singleComp)){ return singleComp.AttemptTask();}
-        if(TryGetComponent<PayloadReceiver>(out PayloadReceiver payloadRec)){ return payloadRec.AttemptTask(playersAttempting);}
+        GetComponent<SingleComponentTerminal>()?.AttemptTask(playersAttempting);
+        GetComponent<PayloadReceiver>()?.AttemptTask(playersAttempting);
+        GetComponent<SimultaneousTransmitter>()?.AttemptTask();
+        GetComponent<SimultaneousReceiver>()?.AttemptTask(playersAttempting);
         //PERFORM TASK GOES HERE
         return false;
     }
 
     public bool PlayerAttemptCancel(Player player)
     {
+        Debug.Log("Reaching1");
         if(player == null || !playersAttempting.Contains(player)){ return false; }
         playersAttempting.Remove(player);
 
         //CANCEL TASK GOES HERE
+        Debug.Log("Reaching2");
+        GetComponent<SimultaneousTransmitter>()?.AttemptTaskCancel();
         return true;
     }
 

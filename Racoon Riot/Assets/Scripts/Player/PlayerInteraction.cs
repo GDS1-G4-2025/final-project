@@ -45,11 +45,7 @@ public class PlayerInteraction : MonoBehaviour
                 // Handle task interaction
                 if (_player.collidingTask != null)
                 {
-                    if(_player.collidingTask.playersAttempting.Contains(_player))
-                    {
-                        _player.collidingTask.playersAttempting.Remove(_player);
-                        _player.collidingTask.PlayerAttemptCancel(_player);
-                    }
+                    _player.collidingTask.PlayerAttemptCancel(_player);
                 }
                 break;
             }
@@ -80,7 +76,6 @@ public class PlayerInteraction : MonoBehaviour
             if(taskData.playersAttempting.Contains(_player))
             {
                 taskData.PlayerAttemptCancel(_player);
-                taskData.playersAttempting.Remove(_player);
             }
         }
     }
