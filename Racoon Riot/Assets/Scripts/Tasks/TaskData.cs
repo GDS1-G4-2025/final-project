@@ -90,9 +90,10 @@ public class TaskData : MonoBehaviour
 
     public void OnStepComplete(TaskData taskData)
     {
-        if(RootTask.TryGetComponent<TaskManager>(out TaskManager taskManager))
+        stepName = taskData.taskName;
+        if(RootTask.transform.parent == null)
         {
-            taskManager.OnStepComplete(this, taskData);
+            return;
         }
         else
         {

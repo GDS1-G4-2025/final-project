@@ -36,9 +36,4 @@ public class TaskManager : MonoBehaviour
         CurrentTasks.Remove(task);
         task.GetComponent<TaskData>().Complete = false;
     }
-
-    public void OnStepComplete(TaskData taskRoot, TaskData taskData)
-    {
-        taskRoot.stepName = taskData.RootTask.GetComponent<TaskData>().taskName ?? taskRoot.GetComponent<TaskData>().taskName;
-    }
 }

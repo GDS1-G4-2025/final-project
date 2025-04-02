@@ -17,7 +17,7 @@ public class TaskListManager : MonoBehaviour
     {
         for (var i = 0; i < _listItems.Length; i++)
         {
-            _listItems[i].text = i < _taskManager.CurrentTasks.Count ? _taskManager.CurrentTasks[i].GetComponent<TaskData>().taskName : "";
+            _listItems[i].text = i < _taskManager.CurrentTasks.Count ? _taskManager.CurrentTasks[i].GetComponent<TaskData>().stepName : "";
         }
     }
 }
