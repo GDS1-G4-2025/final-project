@@ -6,6 +6,7 @@ using UnityEngine;
 public class TaskData : MonoBehaviour
 {
     public string taskName; //Name of the task, appears on task list
+    public string stepName;
     public int pointAllocation; //Points allocated per task. This can be applied on any task at any level
     [SerializeField] private GameObject _rootTask; //Parent Task or Task Manager
     public GameObject RootTask 
@@ -30,6 +31,7 @@ public class TaskData : MonoBehaviour
             _isActive = value; 
             if(_isActive)
             {
+                OnStepComplete(this);
                 /*
                 This section will contain functions attributed to unique task types
                 to be run as soon as the task is activated.
@@ -86,6 +88,18 @@ public class TaskData : MonoBehaviour
         return this.gameObject;
     }
 
+    public void OnStepComplete(TaskData taskData)
+    {
+        if(RootTask.TryGetComponent<TaskManager>(out TaskManager taskManager))
+        {
+            taskManager.OnStepComplete(this, taskData);
+        }
+        else
+        {
+            RootTask.GetComponent<TaskData>().OnStepComplete(taskData);
+        }
+    }
+
     public void BeginTask() //Called when a task first moves into current task list. Finds the lowest children and begins there
     {
         if(NodeTasks.Count > 0)
@@ -132,12 +146,10 @@ public class TaskData : MonoBehaviour
 
     public bool PlayerAttemptCancel(Player player)
     {
-        Debug.Log("Reaching1");
         if(player == null || !playersAttempting.Contains(player)){ return false; }
         playersAttempting.Remove(player);
 
         //CANCEL TASK GOES HERE
-        Debug.Log("Reaching2");
         GetComponent<SimultaneousTransmitter>()?.AttemptTaskCancel();
         return true;
     }

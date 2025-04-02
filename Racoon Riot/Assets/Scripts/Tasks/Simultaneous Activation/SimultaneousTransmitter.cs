@@ -23,7 +23,6 @@ public class SimultaneousTransmitter : MonoBehaviour
 
     public void AttemptTaskCancel()
     {
-        Debug.Log("Reaching3");
         _taskData.Complete = false;
     }
 }
