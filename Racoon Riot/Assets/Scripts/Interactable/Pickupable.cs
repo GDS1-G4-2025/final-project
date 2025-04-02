@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Pickupable : Interactable
 {
-    private Rigidbody _rb;
+    protected Rigidbody _rb;
 
     private void Awake()
     {

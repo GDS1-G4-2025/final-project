@@ -6,7 +6,7 @@ public class PlayerHoldObject : MonoBehaviour
     [SerializeField] public Pickupable heldObject;
 
     [SerializeField] private Pickupable _pickUpTarget;
-    [SerializeField] private GameObject _heldItemHandler;
+    [SerializeField] private GameObject _itemHolder; // Child object of player to hold items
 
     public bool IsHoldingObject()
     {
@@ -21,7 +21,7 @@ public class PlayerHoldObject : MonoBehaviour
         Debug.Log("picking up");
 
         heldObject = _pickUpTarget;
-        heldObject.AttachTo(_heldItemHandler);
+        heldObject.AttachTo(_itemHolder);
         heldObject.GetComponent<Collider>().enabled = false;
         _pickUpTarget = null;
     }

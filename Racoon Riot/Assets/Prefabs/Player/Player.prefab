@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 5418883949459982808}
   - component: {fileID: 5879243435164880715}
   - component: {fileID: 2694808508466260177}
+  - component: {fileID: 7473662722539942085}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -481,6 +482,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!135 &7473662722539942085
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.52959615
+  m_Center: {x: 0, y: 0, z: 0.6}
 --- !u!1 &683602115596898450
 GameObject:
   m_ObjectHideFlags: 0
