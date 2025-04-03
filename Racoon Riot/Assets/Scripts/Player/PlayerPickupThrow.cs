@@ -14,20 +14,26 @@ public class PlayerPickupThrow : MonoBehaviour
         return heldObject != null;
     }
 
-    public void OnObjectInteract(InputAction.CallbackContext ctx)
+    public void OnObjectPickupDrop(InputAction.CallbackContext ctx)
     {
         Debug.Log($"OnObjectInteract called: phase={ctx.phase}, performed={ctx.performed}");
         if (!ctx.performed) return;
 
-        // If I'm already holding something, throw it, else pick up.
+        // If I'm already holding something, drop it, else pick up.
         if (IsHoldingObject())
         {
-            AttemptThrow();
+            //AttemptDrop();
         }
         else
         {
             AttemptPickup();
         }
+    }
+
+    public void OnObjectThrow(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        AttemptThrow();
     }
 
     private void AttemptPickup()
