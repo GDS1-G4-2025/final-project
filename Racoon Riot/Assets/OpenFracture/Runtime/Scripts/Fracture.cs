@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
@@ -143,6 +144,8 @@ public class Fracture : MonoBehaviour
 
             var fragmentTemplate = CreateFragmentTemplate();
 
+            Vector3 explosionCenter = transform.position;
+
             if (fractureOptions.asynchronous)
             {
                 StartCoroutine(Fragmenter.FractureAsync(
@@ -152,6 +155,8 @@ public class Fracture : MonoBehaviour
                     this.fragmentRoot.transform,
                     () =>
                     {
+                        ApplyExplosionForceToFragmentsInternal(explosionCenter);
+
                         // Done with template, destroy it
                         GameObject.Destroy(fragmentTemplate);
 
@@ -177,6 +182,8 @@ public class Fracture : MonoBehaviour
                                     fragmentTemplate,
                                     this.fragmentRoot.transform);
 
+                ApplyExplosionForceToFragmentsInternal(explosionCenter);
+
                 // Done with template, destroy it
                 GameObject.Destroy(fragmentTemplate);
 
@@ -193,6 +200,42 @@ public class Fracture : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void ApplyExplosionForceToFragmentsInternal(Vector3 explosionCenter)
+    {
+        if (!fractureOptions.applyExplosionForce)
+        {
+            return;
+        }
+
+        if (fractureOptions.explosionForce <= 0 || fractureOptions.explosionRadius <= 0)
+        {
+            Debug.LogWarning($"[{this.name}] Explosion force requested, but Force or Radius is zero or less. Skipping force application.", this);
+            return;
+        }
+
+        if (fragmentRoot == null)
+        {
+            Debug.LogWarning($"[{this.name}] Fragment root not found, cannot apply explosion force.", this);
+            return;
+        }
+
+        Rigidbody[] fragmentRbs = fragmentRoot.GetComponentsInChildren<Rigidbody>();
+
+        Debug.Log($"[{this.name}] Applying explosion force. Center: {explosionCenter}, Force: {fractureOptions.explosionForce}, Radius: {fractureOptions.explosionRadius}. Found {fragmentRbs.Length} fragment rigidbodies.");
+
+        foreach (Rigidbody rb in fragmentRbs)
+        {
+            if (rb == this.GetComponent<Rigidbody>()) continue; // Avoid original object
+
+            rb.AddExplosionForce(
+                fractureOptions.explosionForce,
+                explosionCenter,
+                fractureOptions.explosionRadius,
+                fractureOptions.explosionUpwardsModifier,
+                ForceMode.Impulse);
         }
     }
 

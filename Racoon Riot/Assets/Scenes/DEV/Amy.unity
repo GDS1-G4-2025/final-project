@@ -445,99 +445,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &589393157 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-  m_PrefabInstance: {fileID: 5014074110059886450}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &589393164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589393157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1412237648b96e242adaff3b9f84e33b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _vacuumLocation: {fileID: 186745204}
-  sizeThreshold: 1
---- !u!114 &589393165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589393157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad15f2a28b048d849862da558c812fd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskName: Destroy Roomba
-  stepName: 
-  pointAllocation: 0
-  _rootTask: {fileID: 589393157}
-  _nodeTasks: []
-  collidingPlayers: []
-  playersAttempting: []
-  _isActive: 1
-  _isComplete: 0
---- !u!114 &589393166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589393157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a7a4f04c37d45eaad01ec754066fdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteractable: 1
---- !u!114 &589393167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589393157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91fc9178a0b0c3d4bb8b6d91b16d9893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerOptions:
-    triggerType: 1
-    minimumCollisionForce: 0
-    filterCollisionsByTag: 0
-    triggerAllowedTags: []
-    triggerKey: 0
-  fractureOptions:
-    fragmentCount: 10
-    xAxis: 1
-    yAxis: 1
-    zAxis: 1
-    detectFloatingFragments: 0
-    asynchronous: 0
-    insideMaterial: {fileID: 2100000, guid: 3041589aa990b42468c74902ca30f114, type: 2}
-    textureScale: {x: 1, y: 1}
-    textureOffset: {x: 0, y: 0}
-  refractureOptions:
-    enableRefracturing: 0
-    maxRefractureCount: 1
-    invokeCallbacks: 0
-  callbackOptions:
-    onFracture:
-      m_PersistentCalls:
-        m_Calls: []
-    onCompleted:
-      m_PersistentCalls:
-        m_Calls: []
-  currentRefractureCount: 0
 --- !u!1 &629676342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,7 +1019,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6549571210748212936, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
   m_PrefabInstance: {fileID: 1690175687456710568}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1690175687456710569}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49290752420e0d346a6d169acd508ba5, type: 3}
@@ -1123,7 +1030,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5791426454753261805, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
   m_PrefabInstance: {fileID: 1690175687456710568}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1690175687456710569}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec7bc5e27941141d7879b855bc21f47e, type: 3}
@@ -1662,6 +1569,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5034720273036026323, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8532044108166722900, guid: bf1664b81eb7df24f9436cf1523de1de, type: 3}
       propertyPath: m_Name
       value: Task List
@@ -1688,12 +1599,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -1703,6 +1622,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1690175687456710570}
     - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1716,8 +1639,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1393261925}
     - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnDestruction
       objectReference: {fileID: 0}
     - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1732,6 +1663,10 @@ PrefabInstance:
       value: OnObjectThrow
       objectReference: {fileID: 0}
     - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayerDestruction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerPickupThrow, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1742,6 +1677,10 @@ PrefabInstance:
     - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerPickupThrow, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1794,8 +1733,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 663259388419450612, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 1690175687456710570}
   m_SourcePrefab: {fileID: 100100000, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+--- !u!1 &1690175687456710569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 663259388419450612, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
+  m_PrefabInstance: {fileID: 1690175687456710568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1690175687456710570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690175687456710569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76baa3ad391a49b468fc80f3d3b8d467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destructionTarget: {fileID: 0}
 --- !u!1001 &5014074110059886450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1807,6 +1767,38 @@ PrefabInstance:
     - target: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
       propertyPath: m_Name
       value: Roomba
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      propertyPath: triggerOptions.triggerType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      propertyPath: fractureOptions.fragmentCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      propertyPath: fractureOptions.explosionForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      propertyPath: fractureOptions.insideMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 3041589aa990b42468c74902ca30f114, type: 2}
+    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      propertyPath: fractureOptions.explosionRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      propertyPath: fractureOptions.applyExplosionForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      propertyPath: fractureOptions.explosionUpwardsModifier
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6929529417228433562, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1848,22 +1840,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6941249837804879051, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      propertyPath: _vacuumLocation
+      value: 
+      objectReference: {fileID: 186745204}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 589393164}
-    - targetCorrespondingSourceObject: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 589393167}
-    - targetCorrespondingSourceObject: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 589393166}
-    - targetCorrespondingSourceObject: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 589393165}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

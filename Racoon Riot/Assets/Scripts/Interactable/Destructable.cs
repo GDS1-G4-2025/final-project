@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Fracture))]
 public class Destructable : Interactable
 {
     private Fracture _fracture;
+    private bool _isDestroyed = false;
 
     private void Awake()
     {
@@ -16,13 +18,14 @@ public class Destructable : Interactable
 
     public void Destroy()
     {
-        if (_fracture != null)
+        if (_fracture != null && !_isDestroyed)
         {
+            _isDestroyed = true;
             _fracture.CauseFracture();
         }
         else
         {
-            Debug.LogWarning("Fracture component is missing. Cannot destroy.");
+            //Debug.Log("Fracture component is missing. Cannot destroy.");
         }
     }
 }
