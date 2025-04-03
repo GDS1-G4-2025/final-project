@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4531235380267234485}
   - component: {fileID: 4226277618258820344}
   - component: {fileID: 3546891487581645450}
-  - component: {fileID: 723836286920761089}
   - component: {fileID: 8813517720414664082}
   - component: {fileID: -5697125409019543693}
+  - component: {fileID: 7999466968626341766}
+  - component: {fileID: 5451690938457733969}
   m_Layer: 0
   m_Name: Payload
   m_TagString: PickUpObject
@@ -107,25 +108,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &723836286920761089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003339734239686938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d51dece146cbc7e4dae52b398cfcf8e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isInteractable: 0
-  _collidingPlayers: []
-  parentTask: {fileID: 0}
 --- !u!54 &8813517720414664082
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -166,3 +152,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+--- !u!114 &7999466968626341766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003339734239686938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad15f2a28b048d849862da558c812fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskName: 
+  stepName: 
+  pointAllocation: 0
+  _rootTask: {fileID: 0}
+  _nodeTasks: []
+  collidingPlayers: []
+  playersAttempting: []
+  _isActive: 0
+  _isComplete: 0
+--- !u!114 &5451690938457733969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003339734239686938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
