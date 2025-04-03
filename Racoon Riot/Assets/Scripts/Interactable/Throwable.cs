@@ -40,6 +40,6 @@ public class Throwable : Pickupable
             return; // Can't apply force without a rigidbody
         }
 
-        Debug.Log($"{name} was thrown with force: {direction.normalized * _throwForce}");
+        //Debug.Log($"{name} was thrown with force: {direction.normalized * _throwForce}");
     }
 }

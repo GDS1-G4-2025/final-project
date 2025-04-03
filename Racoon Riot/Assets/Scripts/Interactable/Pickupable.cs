@@ -15,7 +15,7 @@ public class Pickupable : Interactable
     public override void Interact()
     {
         base.Interact();
-        Debug.Log(name + " has been picked up!");
+        //Debug.Log(name + " has been picked up!");
     }
 
     public void AttachTo(GameObject parent)
@@ -71,6 +71,6 @@ public class Pickupable : Interactable
             Debug.LogError($"{name} cannot be dropped properly - missing Rigidbody.", this);
         }
 
-        Debug.Log($"{name} placed at {targetPosition}");
+        //Debug.Log($"{name} placed at {targetPosition}");
     }
 }

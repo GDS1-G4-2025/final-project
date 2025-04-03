@@ -23,7 +23,7 @@ public class PlayerPickupThrow : MonoBehaviour
 
     public void OnObjectPickupDrop(InputAction.CallbackContext ctx)
     {
-        Debug.Log($"OnObjectInteract called: phase={ctx.phase}, performed={ctx.performed}");
+        //Debug.Log($"OnObjectInteract called: phase={ctx.phase}, performed={ctx.performed}");
 
         if (ctx.phase == InputActionPhase.Started)
         {
@@ -33,7 +33,7 @@ public class PlayerPickupThrow : MonoBehaviour
                 return;
             }
 
-            Debug.Log("Processing Interact Input (Started phase)");
+            //Debug.Log("Processing Interact Input (Started phase)");
 
             _canInteract = false;
 
@@ -77,7 +77,7 @@ public class PlayerPickupThrow : MonoBehaviour
             return; // Safeguard
         }
 
-        Debug.Log("Picking up: " + _pickUpTarget.name);
+        //Debug.Log("Picking up: " + _pickUpTarget.name);
         heldObject = _pickUpTarget;
         heldObject.AttachTo(_itemHolder);
         _pickUpTarget = null;
@@ -87,7 +87,7 @@ public class PlayerPickupThrow : MonoBehaviour
     {
         if (heldObject == null) return;
 
-        Debug.Log("Dropping: " + heldObject.name);
+        //Debug.Log("Dropping: " + heldObject.name);
         Pickupable objectToDrop = heldObject;
         heldObject = null;
 
@@ -102,7 +102,7 @@ public class PlayerPickupThrow : MonoBehaviour
 
         if (heldObject.TryGetComponent<Throwable>(out Throwable throwable))
         {
-            Debug.Log("Attempting to throw: " + heldObject.name);
+            //Debug.Log("Attempting to throw: " + heldObject.name);
 
             Pickupable objectToThrow = heldObject;
             heldObject = null;
@@ -132,7 +132,7 @@ public class PlayerPickupThrow : MonoBehaviour
         if (!IsHoldingObject() && other.gameObject.TryGetComponent(out Pickupable pickupable))
         {
             _pickUpTarget = pickupable;
-            Debug.Log("Pickup target set");
+            //Debug.Log("Pickup target set");
         }
     }
 
