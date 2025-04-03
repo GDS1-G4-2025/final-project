@@ -6,14 +6,6 @@ public class Throwable : Pickupable
 {
     [SerializeField] private float _throwForce = 10f;
 
-    private Collider _col;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        _col = GetComponent<Collider>();
-    }
-
     public void Throw(Vector3 direction)
     {
         transform.SetParent(null); // Detach from player hand
