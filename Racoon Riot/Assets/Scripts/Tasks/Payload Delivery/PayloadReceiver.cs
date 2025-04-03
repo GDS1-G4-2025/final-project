@@ -1,28 +1,40 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(TaskData))]
 public class PayloadReceiver : MonoBehaviour
 {
-    [SerializeField] private TaskData _taskData;
-    [SerializeField] private int _receivedCount;
-
+    private TaskData _taskData;
+    [SerializeField] private List<Payload> _payloadsRemaining;
     private void Start()
     {
-        _taskData = gameObject.GetComponent<TaskData>();
+        _taskData = GetComponent<TaskData>();
     }
 
-    private void FixedUpdate()
+    public void AddPayload(Payload payload){ _payloadsRemaining.Add(payload); }
+    public bool AttemptTask(List<Player> players)
     {
-        if(_taskData.playerAttempting){
-            foreach(var node in _taskData.Nodes){
-                if(node == _taskData.playerAttempting.hold.heldObject?.gameObject){
-                    _receivedCount += 1;
-                    node.transform.parent = transform;
-                    node.SetActive(false);
-                    _taskData.playerAttempting.hold.heldObject = null;
+        foreach(Player p in players)
+        {
+            if(p.hold.heldObject != null)
+            {
+                if(_payloadsRemaining.Contains(p.hold.heldObject.GetComponent<Payload>()))
+                {
+                    _payloadsRemaining.Remove(p.hold.heldObject.GetComponent<Payload>());
+                    p.hold.heldObject.AttachTo(this.gameObject);
+                    p.hold.heldObject.GetComponent<Collider>().enabled = false;;
+                    p.hold.heldObject = null;
+                }
+                if(_payloadsRemaining.Count == 0)
+                { 
+                    List<Player> winner = new List<Player>();
+                    winner.Add(p);
+                    _taskData.CompleteTask(winner); 
+                    return true;
                 }
             }
         }
-        if(_receivedCount >= _taskData.Nodes.Count){ _taskData.TaskCompleted(); }
+        return false;
     }
 }

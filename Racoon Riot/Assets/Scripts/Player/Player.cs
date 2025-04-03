@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
 
     // Data
     public TaskData collidingTask;
-    public NodeData collidingNode;
 
     private void Awake()
     {
