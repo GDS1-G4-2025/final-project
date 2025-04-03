@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7519432220476024105}
   - component: {fileID: 3703593200639778367}
   - component: {fileID: 527121344901638972}
+  - component: {fileID: 8138009050431373243}
   m_Layer: 0
   m_Name: Roomba
   m_TagString: Untagged
@@ -156,3 +157,17 @@ MonoBehaviour:
   _backupTime: 1
   _minTurnAngle: 90
   _maxTurnAngle: 180
+--- !u!114 &8138009050431373243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3446952232935266694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1412237648b96e242adaff3b9f84e33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vacuumLocation: {fileID: 0}
+  sizeThreshold: 1

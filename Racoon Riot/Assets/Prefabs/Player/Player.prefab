@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 5418883949459982808}
   - component: {fileID: 5879243435164880715}
   - component: {fileID: 2694808508466260177}
+  - component: {fileID: 7473662722539942085}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -218,8 +219,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5791426454753261805}
-        m_TargetAssemblyTypeName: PickUp, Assembly-CSharp
-        m_MethodName: PickUpObject
+        m_TargetAssemblyTypeName: PlayerPickupThrow, Assembly-CSharp
+        m_MethodName: OnObjectPickupDrop
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -230,7 +231,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 6549571210748212936}
-        m_TargetAssemblyTypeName: PlayerInteract, Assembly-CSharp
+        m_TargetAssemblyTypeName: PlayerInteraction, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
@@ -244,7 +245,19 @@ MonoBehaviour:
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: 'Player/Interact[/Keyboard/e,/DualSenseGamepadHID/buttonNorth]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5791426454753261805}
+        m_TargetAssemblyTypeName: PlayerPickupThrow, Assembly-CSharp
+        m_MethodName: OnObjectThrow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
     m_ActionName: 'Player/Crouch[/DualSenseGamepadHID/buttonEast,/Keyboard/c]'
   - m_PersistentCalls:
@@ -393,7 +406,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heldObject: {fileID: 0}
   _pickUpTarget: {fileID: 0}
-  _heldItemHandler: {fileID: 4580722346766851041}
+  _itemHolder: {fileID: 4580722346766851041}
+  _interactCooldown: 0.3
+  _placeDistance: 1
+  _throwStartPositionOffset: 0.5
 --- !u!114 &6549571210748212936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +497,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!135 &7473662722539942085
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.52959615
+  m_Center: {x: 0, y: 0, z: 0.6}
 --- !u!1 &683602115596898450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,7 +1596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7491580088227298890}
   m_Layer: 0
-  m_Name: PickUpHandler
+  m_Name: ItemPickUpHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
