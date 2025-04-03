@@ -218,9 +218,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Attack[/DualSenseGamepadHID/buttonWest,/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6549571210748212936}
-        m_TargetAssemblyTypeName: PlayerInteract, Assembly-CSharp
-        m_MethodName: OnInteract
+      - m_Target: {fileID: 5791426454753261805}
+        m_TargetAssemblyTypeName: PlayerPickupThrow, Assembly-CSharp
+        m_MethodName: OnObjectPickupDrop
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -230,9 +230,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5791426454753261805}
-        m_TargetAssemblyTypeName: PlayerPickupThrow, Assembly-CSharp
-        m_MethodName: OnObjectInteract
+      - m_Target: {fileID: 6549571210748212936}
+        m_TargetAssemblyTypeName: PlayerInteraction, Assembly-CSharp
+        m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -245,7 +245,19 @@ MonoBehaviour:
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: 'Player/Interact[/Keyboard/e,/DualSenseGamepadHID/buttonNorth]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5791426454753261805}
+        m_TargetAssemblyTypeName: PlayerPickupThrow, Assembly-CSharp
+        m_MethodName: OnObjectThrow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
     m_ActionName: 'Player/Crouch[/DualSenseGamepadHID/buttonEast,/Keyboard/c]'
   - m_PersistentCalls:
@@ -395,6 +407,9 @@ MonoBehaviour:
   heldObject: {fileID: 0}
   _pickUpTarget: {fileID: 0}
   _itemHolder: {fileID: 4580722346766851041}
+  _interactCooldown: 0.3
+  _placeDistance: 1
+  _throwStartPositionOffset: 0.5
 --- !u!114 &6549571210748212936
 MonoBehaviour:
   m_ObjectHideFlags: 0
