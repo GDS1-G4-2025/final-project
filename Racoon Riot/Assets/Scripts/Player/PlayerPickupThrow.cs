@@ -60,8 +60,11 @@ public class PlayerPickupThrow : MonoBehaviour
     {
         if (ctx.phase == InputActionPhase.Started)
         {
+            _canInteract = false;
             AttemptThrow();
         }
+
+        StartCoroutine(InteractCooldownTimer());
     }
 
     private void AttemptPickup()
