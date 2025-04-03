@@ -9,8 +9,8 @@ public class PlayerSnapping : MonoBehaviour
     [SerializeField] private float _snapDistance = 1.0f;
     [SerializeField] private bool _enablePositionSnap = true;
 
-    [SerializeField] private float _snapRotationSpeed = 360f;
-    [SerializeField] private float _snapMoveSpeed = 5f;
+    //[SerializeField] private float _snapRotationSpeed = 360f;
+    //[SerializeField] private float _snapMoveSpeed = 5f;
 
     private Coroutine _activeSnapCoroutine = null;
     private bool _isSnapping = false;
