@@ -5,8 +5,6 @@ using System.Linq;
 public class PlayerDestruction : MonoBehaviour
 {
     [SerializeField] private Destructible _destructionTarget;
-
-    [Header("Snapping Integration (for Destruction Action)")]
     [SerializeField] private bool _enableSnapping = true;
 
     private PlayerSnapping _playerSnapping;
