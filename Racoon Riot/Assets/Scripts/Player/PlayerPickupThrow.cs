@@ -13,6 +13,8 @@ public class PlayerPickupThrow : MonoBehaviour
     //Interaction
     private bool _canInteract = true;
     [SerializeField] private float _interactCooldown = 0.3f; // Time between interactions
+    [SerializeField] private float _placeDistance = 1.0f; // Distance to place the object in front of the player
+    [SerializeField] private float _throwStartPositionOffset = 0.9f;
 
     public bool IsHoldingObject()
     {
@@ -89,8 +91,7 @@ public class PlayerPickupThrow : MonoBehaviour
         Pickupable objectToDrop = heldObject;
         heldObject = null;
 
-        float placementDistance = 1.0f;
-        objectToDrop.Drop(transform, placementDistance);
+        objectToDrop.Drop(transform, _placeDistance);
 
         _pickUpTarget = null; // Prevent immediate re-pickup
     }
@@ -98,11 +99,31 @@ public class PlayerPickupThrow : MonoBehaviour
     private void AttemptThrow()
     {
         if (heldObject == null) return;
+
         if (heldObject.TryGetComponent<Throwable>(out Throwable throwable))
         {
-            Debug.Log("throwing");
-            throwable.Throw(transform.forward);
+            Debug.Log("Attempting to throw: " + heldObject.name);
+
+            Pickupable objectToThrow = heldObject;
             heldObject = null;
+            _pickUpTarget = null;
+
+            Vector3 playerPos = transform.position; // Player's base position
+            Vector3 playerForward = transform.forward;
+            Vector3 startPosition = playerPos + playerForward.normalized * _throwStartPositionOffset;
+            objectToThrow.transform.position = startPosition;
+            objectToThrow.transform.rotation = transform.rotation;
+
+            throwable.Throw(transform.forward);
+        }
+        else
+        {
+            Debug.LogWarning($"{heldObject.name} is not Throwable. Cannot throw. Performing Place action instead.");
+            // Fallback: Perform a place/drop instead of throwing if not throwable
+            Pickupable objectToDrop = heldObject;
+            heldObject = null;
+            _pickUpTarget = null;
+            objectToDrop.Drop(transform, _placeDistance);
         }
     }
 
