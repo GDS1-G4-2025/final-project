@@ -9,11 +9,11 @@ public class PlayerAttack : MonoBehaviour
     private static readonly int IsAttackingStr = Animator.StringToHash("isAttacking");
     private static readonly int AttackStr = Animator.StringToHash("attack");
 
-    //[SerializeField] private GameObject _attackCollisionHolder;
     [SerializeField] private float _attackDuration;
     [SerializeField] private float _attackDamage;
     [SerializeField] private float _knockbackForce;
     [SerializeField] private bool _enableSnapping = true;
+    [SerializeField] private float _damageApplyDelay = 0.2f;
 
     private Transform _potentialAttackTarget;
 
@@ -21,21 +21,6 @@ public class PlayerAttack : MonoBehaviour
     private Animator _animator;
     private PlayerMovement _playerMovement;
     private PlayerSnapping _playerSnapping;
-
-    public void Attack(GameObject target)
-    {
-        target.GetComponent<PlayerHealth>().TakeDamage(_attackDamage);
-
-        //Knockback
-        if (target.TryGetComponent<Rigidbody>(out Rigidbody targetRigidbody))
-        {
-            Vector3 direction = (target.transform.position - transform.position).normalized;
-            direction.y = 0;
-            if (direction == Vector3.zero) direction = transform.forward; // Fallback if overlapping
-
-            targetRigidbody.AddForce(direction * _knockbackForce);
-        }
-    }
 
     private void Awake()
     {
@@ -60,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
                         if (targetToSnapTo != null && targetToSnapTo.gameObject.activeInHierarchy)
                         {
                             Debug.Log("Snap complete. Starting AttackRoutine.");
-                            StartCoroutine(AttackRoutine());
+                            StartCoroutine(AttackRoutine(targetToSnapTo));
                         }
                         else
                         {
@@ -71,27 +56,58 @@ public class PlayerAttack : MonoBehaviour
             }
             else
             {
-                StartCoroutine(AttackRoutine());
+                StartCoroutine(AttackRoutine(null));
             }
         }
     }
 
-    private IEnumerator AttackRoutine()
+    private IEnumerator AttackRoutine(Transform snappedTarget)
     {
         _isAttacking = true;
         _animator.SetBool(IsAttackingStr, true);
 
         //Disabling movement
-        _playerMovement.enabled = false;
+        if (_playerMovement != null) _playerMovement.enabled = false;
 
         Debug.Log("Attacking");
         _animator.SetTrigger(AttackStr);
-        //_attackCollisionHolder.SetActive(true);
 
-        yield return new WaitForSeconds(_attackDuration);
+        if (_damageApplyDelay > 0)
+        {
+            yield return new WaitForSeconds(_damageApplyDelay);
+        }
+
+        Transform targetToHit = snappedTarget ?? _potentialAttackTarget;
+
+        if (targetToHit != null && targetToHit.gameObject.activeInHierarchy)
+        {
+            GameObject targetObject = targetToHit.gameObject;
+
+            // Apply Damage
+            if (targetObject.TryGetComponent<PlayerHealth>(out PlayerHealth playerHealth))
+            {
+                playerHealth.TakeDamage(_attackDamage);
+            }
+
+            // Apply Knockback
+            if (targetObject.TryGetComponent<Rigidbody>(out Rigidbody targetRigidbody))
+            {
+                Vector3 direction = (targetObject.transform.position - transform.position).normalized;
+                direction.y = 0; // Keep knockback horizontal
+                if (direction == Vector3.zero) direction = transform.forward;
+
+                targetRigidbody.AddForce(direction * _knockbackForce);
+            }
+        }
+
+        float remainingTime = _attackDuration - _damageApplyDelay;
+        if (remainingTime > 0)
+        {
+            yield return new WaitForSeconds(remainingTime);
+        }
 
         //Enabling movement
-        _playerMovement.enabled = true;
+        if (_playerMovement != null) _playerMovement.enabled = true;
 
         _isAttacking = false;
         _animator.SetBool(IsAttackingStr, false);
@@ -99,7 +115,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Player"))
+        if (other.transform.CompareTag("Player") && other.transform != this.transform)
         {
             _potentialAttackTarget = other.transform;
         }
@@ -107,7 +123,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.CompareTag("Player"))
+        if (other.transform.CompareTag("Player") && other.transform == _potentialAttackTarget)
         {
             _potentialAttackTarget = null;
         }
