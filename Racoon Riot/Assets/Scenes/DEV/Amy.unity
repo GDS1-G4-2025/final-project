@@ -464,6 +464,80 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _vacuumLocation: {fileID: 186745204}
   sizeThreshold: 1
+--- !u!114 &589393165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589393157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad15f2a28b048d849862da558c812fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskName: Destroy Roomba
+  stepName: 
+  pointAllocation: 0
+  _rootTask: {fileID: 589393157}
+  _nodeTasks: []
+  collidingPlayers: []
+  playersAttempting: []
+  _isActive: 1
+  _isComplete: 0
+--- !u!114 &589393166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589393157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a7a4f04c37d45eaad01ec754066fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+--- !u!114 &589393167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589393157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91fc9178a0b0c3d4bb8b6d91b16d9893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerOptions:
+    triggerType: 1
+    minimumCollisionForce: 0
+    filterCollisionsByTag: 0
+    triggerAllowedTags: []
+    triggerKey: 0
+  fractureOptions:
+    fragmentCount: 10
+    xAxis: 1
+    yAxis: 1
+    zAxis: 1
+    detectFloatingFragments: 0
+    asynchronous: 0
+    insideMaterial: {fileID: 2100000, guid: 3041589aa990b42468c74902ca30f114, type: 2}
+    textureScale: {x: 1, y: 1}
+    textureOffset: {x: 0, y: 0}
+  refractureOptions:
+    enableRefracturing: 0
+    maxRefractureCount: 1
+    invokeCallbacks: 0
+  callbackOptions:
+    onFracture:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleted:
+      m_PersistentCalls:
+        m_Calls: []
+  currentRefractureCount: 0
 --- !u!1 &629676342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,6 +1773,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 589393164}
+    - targetCorrespondingSourceObject: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 589393167}
+    - targetCorrespondingSourceObject: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 589393166}
+    - targetCorrespondingSourceObject: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 589393165}
   m_SourcePrefab: {fileID: 100100000, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
