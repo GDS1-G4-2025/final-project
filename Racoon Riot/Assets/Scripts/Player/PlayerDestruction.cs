@@ -4,7 +4,7 @@ using System.Linq;
 
 public class PlayerDestruction : MonoBehaviour
 {
-    [SerializeField] private Destructable _destructionTarget;
+    [SerializeField] private Destructible _destructionTarget;
 
     public void OnDestruction(InputAction.CallbackContext ctx)
     {
@@ -19,9 +19,9 @@ public class PlayerDestruction : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out Destructable destructable))
+        if (other.gameObject.TryGetComponent(out Destructible destructible))
         {
-            _destructionTarget = destructable;
+            _destructionTarget = destructible;
         }
     }
 
@@ -35,9 +35,9 @@ public class PlayerDestruction : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.TryGetComponent(out Destructable destructable))
+        if (other.gameObject.TryGetComponent(out Destructible destructible))
         {
-            _destructionTarget = destructable;
+            _destructionTarget = destructible;
         }
     }
 

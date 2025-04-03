@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Fracture))]
-public class Destructable : Interactable
+public class Destructible : Interactable
 {
     private Fracture _fracture;
     private bool _isDestroyed = false;
