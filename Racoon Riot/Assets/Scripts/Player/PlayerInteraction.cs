@@ -52,14 +52,17 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if(other.TryGetComponent<TaskData>(out TaskData taskData))
+        if(_player.collidingTask == null)
         {
-            if(taskData.Active && !taskData.collidingPlayers.Contains(_player))
+            if(other.TryGetComponent<TaskData>(out TaskData taskData))
             {
-                _player.collidingTask = taskData;
-                taskData.collidingPlayers.Add(_player);
+                if(taskData.Active && !taskData.collidingPlayers.Contains(_player))
+                {
+                    _player.collidingTask = taskData;
+                    taskData.collidingPlayers.Add(_player);
+                }
             }
         }
     }
