@@ -1014,28 +1014,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffb60310e3de01141a4e5175fc74d27d, type: 3}
---- !u!114 &1393261924 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6549571210748212936, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-  m_PrefabInstance: {fileID: 1690175687456710568}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690175687456710569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49290752420e0d346a6d169acd508ba5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1393261925 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5791426454753261805, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-  m_PrefabInstance: {fileID: 1690175687456710568}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690175687456710569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7bc5e27941141d7879b855bc21f47e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1561586319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,98 +1576,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1690175687456710570}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1393261925}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1393261924}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1393261925}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnDestruction
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnObjectPickupDrop
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnInteract
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnObjectThrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: PlayerDestruction, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerPickupThrow, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: PlayerInteraction, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerPickupThrow, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608069173120779056, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7081887502781210198, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1733,29 +1619,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 663259388419450612, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-      insertIndex: 7
-      addedObject: {fileID: 1690175687456710570}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
---- !u!1 &1690175687456710569 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 663259388419450612, guid: ff0fc3905740f374cbcbc0c74f02cca7, type: 3}
-  m_PrefabInstance: {fileID: 1690175687456710568}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1690175687456710570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690175687456710569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76baa3ad391a49b468fc80f3d3b8d467, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _destructionTarget: {fileID: 0}
 --- !u!1001 &5014074110059886450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1767,38 +1632,6 @@ PrefabInstance:
     - target: {fileID: 3446952232935266694, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
       propertyPath: m_Name
       value: Roomba
-      objectReference: {fileID: 0}
-    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      propertyPath: triggerOptions.triggerType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      propertyPath: fractureOptions.fragmentCount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      propertyPath: fractureOptions.explosionForce
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      propertyPath: fractureOptions.insideMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 3041589aa990b42468c74902ca30f114, type: 2}
-    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      propertyPath: fractureOptions.explosionRadius
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      propertyPath: fractureOptions.applyExplosionForce
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5994276837755758803, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
-      propertyPath: fractureOptions.explosionUpwardsModifier
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6929529417228433562, guid: 8c08ff85366b96043bd799737b1636ed, type: 3}
       propertyPath: m_LocalPosition.x

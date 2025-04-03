@@ -208,7 +208,7 @@ MonoBehaviour:
     triggerAllowedTags: []
     triggerKey: 0
   fractureOptions:
-    fragmentCount: 5
+    fragmentCount: 10
     xAxis: 1
     yAxis: 1
     zAxis: 1
@@ -217,9 +217,9 @@ MonoBehaviour:
     insideMaterial: {fileID: 2100000, guid: 3041589aa990b42468c74902ca30f114, type: 2}
     textureScale: {x: 1, y: 1}
     textureOffset: {x: 0, y: 0}
-    applyExplosionForce: 0
-    explosionForce: 10
-    explosionRadius: 5
+    applyExplosionForce: 1
+    explosionForce: 2
+    explosionRadius: 3
     explosionUpwardsModifier: 0.5
   refractureOptions:
     enableRefracturing: 0
