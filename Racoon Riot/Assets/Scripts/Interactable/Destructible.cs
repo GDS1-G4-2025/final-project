@@ -7,6 +7,8 @@ public class Destructible : Interactable
     private Fracture _fracture;
     private bool _isDestroyed = false;
 
+    public bool destructionEnabled = true;
+
     private void Awake()
     {
         _fracture = GetComponent<Fracture>();
@@ -18,7 +20,7 @@ public class Destructible : Interactable
 
     public void Destroy()
     {
-        if (_fracture != null && !_isDestroyed)
+        if (_fracture != null && !_isDestroyed && destructionEnabled)
         {
             _isDestroyed = true;
             _fracture.CauseFracture();
