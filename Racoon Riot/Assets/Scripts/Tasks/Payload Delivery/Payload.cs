@@ -1,16 +1,20 @@
 using UnityEngine;
 
+[RequireComponent(typeof(TaskData))]
 public class Payload : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
-    {
-        
-    }
+    private TaskData _taskData;
+    private void Start(){ _taskData = GetComponent<TaskData>(); }
 
-    // Update is called once per frame
-    private void Update()
+    public void OnMap(TaskData taskData)
     {
-        
+        Debug.Log(taskData.transform.name);
+        taskData.RootTask.GetComponent<PayloadReceiver>().AddPayload(this);
+        GetComponent<Collider>().enabled = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
+    public void OnActivate()
+    { 
+        _taskData.CompleteTask(null); 
     }
 }
