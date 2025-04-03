@@ -35,6 +35,12 @@ public class FractureOptions
     [Tooltip("Offset to apply to texture coordinates")]
     public Vector2 textureOffset;
 
+    public bool applyExplosionForce;
+    public float explosionForce;
+    public float explosionRadius;
+    public float explosionUpwardsModifier;
+
+
     public FractureOptions()
     {
         this.fragmentCount = 10;
@@ -46,5 +52,11 @@ public class FractureOptions
         this.insideMaterial = null;
         this.textureScale = Vector2.one;
         this.textureOffset = Vector2.zero;
+
+        // Custom explosion options
+        this.applyExplosionForce = false;
+        this.explosionForce = 1f;
+        this.explosionRadius = 3f;
+        this.explosionUpwardsModifier = 0.5f;
     }
 }

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1295886073521851764}
   - component: {fileID: 7240901342119279526}
   - component: {fileID: 5233064576042545595}
+  - component: {fileID: 6386615499442500350}
+  - component: {fileID: 2527897210590771091}
   m_Layer: 0
   m_Name: PickUpObject
   m_TagString: PickUpObject
@@ -177,3 +179,30 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   currentRefractureCount: 0
+--- !u!114 &6386615499442500350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8671789621161052776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+--- !u!114 &2527897210590771091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8671789621161052776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eab92e3eb3784d84b5c818e9e4dc838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+  _throwForce: 10
