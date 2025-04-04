@@ -16,7 +16,7 @@ public class TaskData : MonoBehaviour
         get { return _rootTask; } 
     }
     [SerializeField] private List<GameObject> _nodeTasks; //Child tasks, the very beginning of a task will have no NodeTasks
-    public IReadOnlyList<GameObject> NodeTasks 
+    public List<GameObject> NodeTasks 
     { 
         get { return _nodeTasks; } 
     }
@@ -187,6 +187,7 @@ public class TaskData : MonoBehaviour
             foreach(Player player in completingPlayers)
             {
                 player.score.AddPoints(pointAllocation);
+                player.collidingTask = null;
             }
         }
         collidingPlayers.Clear();
