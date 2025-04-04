@@ -5,14 +5,52 @@ using System.Linq;
 public class PlayerDestruction : MonoBehaviour
 {
     [SerializeField] private Destructible _destructionTarget;
+    [SerializeField] private bool _enableSnapping = true;
+
+    private PlayerSnapping _playerSnapping;
+
+    private void Awake()
+    {
+        _playerSnapping = GetComponent<PlayerSnapping>();
+    }
 
     public void OnDestruction(InputAction.CallbackContext ctx)
     {
         if (ctx.phase == InputActionPhase.Started)
         {
-            if (_destructionTarget != null)
+            if (_destructionTarget != null && (_playerSnapping == null || !_playerSnapping.IsSnapping))
             {
-                _destructionTarget.Destroy();
+                // Decide whether to snap or destroy immediately
+                if (_enableSnapping && _playerSnapping != null)
+                {
+                    Destructible targetToDestroy = _destructionTarget;
+
+                    _playerSnapping.StartSnap(
+                        targetToDestroy.transform,
+                        () =>
+                        {
+                            // Check if the originally targeted object still exists and is the correct one
+                            if (targetToDestroy != null && targetToDestroy.gameObject.activeInHierarchy)
+                            {
+                                targetToDestroy.Destroy();
+                            }
+                            else
+                            {
+                                Debug.Log("Target for destruction was lost or destroyed before snap completed.");
+                            }
+                        }
+                    );
+                }
+                else
+                {
+                    // Destroy Immediately
+                    Debug.Log($"Destroying {_destructionTarget.name} (Snapping disabled or unavailable).");
+                    _destructionTarget.Destroy();
+                }
+            }
+            else if (ctx.phase == InputActionPhase.Started && _destructionTarget != null && _playerSnapping != null && _playerSnapping.IsSnapping)
+            {
+                Debug.Log("Destruction input ignored: Player is currently snapping.");
             }
         }
     }
