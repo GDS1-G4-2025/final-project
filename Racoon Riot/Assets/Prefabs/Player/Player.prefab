@@ -231,9 +231,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Attack[/DualSenseGamepadHID/buttonWest,/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5791426454753261805}
-        m_TargetAssemblyTypeName: PlayerPickupThrow, Assembly-CSharp
-        m_MethodName: OnObjectPickupDrop
+      - m_Target: {fileID: 6549571210748212936}
+        m_TargetAssemblyTypeName: PlayerInteraction, Assembly-CSharp
+        m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -243,9 +243,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6549571210748212936}
-        m_TargetAssemblyTypeName: PlayerInteraction, Assembly-CSharp
-        m_MethodName: OnInteract
+      - m_Target: {fileID: 5791426454753261805}
+        m_TargetAssemblyTypeName: PlayerPickupThrow, Assembly-CSharp
+        m_MethodName: OnObjectPickupDrop
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -542,7 +542,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.52959615
-  m_Center: {x: 0, y: 0, z: 0.6}
+  m_Center: {x: 0, y: 0, z: 0.9}
 --- !u!1 &683602115596898450
 GameObject:
   m_ObjectHideFlags: 0
