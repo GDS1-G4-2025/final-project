@@ -18,6 +18,11 @@ public class PlayerAttack : MonoBehaviour
     private Animator _animator;
     private PlayerMovement _playerMovement;
 
+    void Start()
+    {
+        _attackCollisionHolder.GetComponent<AttackCollision>().attackDuration = _attackDuration;
+    }
+
     public void Attack(GameObject target)
     {
         target.GetComponent<PlayerHealth>().TakeDamage(_attackDamage);
