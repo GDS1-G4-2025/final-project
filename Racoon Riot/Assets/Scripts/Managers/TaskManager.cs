@@ -8,6 +8,8 @@ public class TaskManager : MonoBehaviour
     [SerializeField] private List<GameObject> _upcomingTasks;
     [SerializeField] private List<GameObject> _completedTasks;
 
+    [SerializeField] private List<GameObject> _expiredTasks;
+
     public List<GameObject> CurrentTasks { get; } = new List<GameObject>();
 
     public void Update()
@@ -35,5 +37,12 @@ public class TaskManager : MonoBehaviour
         _completedTasks.Add(task);
         CurrentTasks.Remove(task);
         task.GetComponent<TaskData>().Complete = false;
+    }
+
+    public void ExpireTask(GameObject task)
+    {
+        CurrentTasks.Remove(task);
+        _expiredTasks.Add(task);
+        
     }
 }
