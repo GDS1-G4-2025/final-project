@@ -20,5 +20,10 @@ public class AttackCollision : MonoBehaviour
             _attackHandler.Attack(other.gameObject);
             DisableSelf();
         }
+        if(other.TryGetComponent<AttackTask>(out AttackTask task))
+        {
+            Debug.Log("hitTask");
+            task.PlayerAttacked(_attackHandler.GetComponent<Player>());
+        }
     }
 }
