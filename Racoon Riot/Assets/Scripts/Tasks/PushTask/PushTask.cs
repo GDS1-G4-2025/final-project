@@ -5,8 +5,11 @@ using UnityEngine;
 public class PushTask : MonoBehaviour
 {
     private TaskData _taskData;
+    [SerializeField] private float _knockbackForce;
 
+    public TriggerOptions triggerOptions;
     public FractureOptions fractureOptions;
+
     private Rigidbody _rigidbody;
     [SerializeField] private Player completingPlayer;
     [SerializeField] private float _minVelocity = 7;
@@ -19,16 +22,17 @@ public class PushTask : MonoBehaviour
         _rigidbody.isKinematic = true;
     }
 
-    public void SetPlayer(Player player)
+    public void HitByPlayer(Player player)
     { 
+        Debug.Log("pushing");
         completingPlayer = player;
         _rigidbody.isKinematic = false;
+        _rigidbody.AddForce(player.transform.forward * _knockbackForce);
     }
 
-    public Fracture testing;
     void OnTriggerEnter(Collider other)
     {
-        if(GetComponent<Rigidbody>().linearVelocity.y < -_minVelocity)
+        if(GetComponent<Rigidbody>().linearVelocity.y < -_minVelocity && _taskData.Active)
         {
             List<Player> winner = new List<Player>();
             winner.Add(completingPlayer);
@@ -36,7 +40,8 @@ public class PushTask : MonoBehaviour
             if(_isDestructible)
             {
                 gameObject.AddComponent<Destructible>();
-                GetComponent<Fracture>().fractureOptions = fractureOptions;
+                Fracture fracture = GetComponent<Fracture>();
+                fracture.fractureOptions = fractureOptions;
             }
         }
     }
