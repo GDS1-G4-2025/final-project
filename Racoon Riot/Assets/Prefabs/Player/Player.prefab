@@ -401,11 +401,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be132dc1698630444b9ebb9e53b991f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDuration: 1
+  _attackDuration: 0.5
   _attackDamage: 10
-  _knockbackForce: 200
+  _knockbackForce: 10
   _enableSnapping: 1
   _damageApplyDelay: 0.2
+  _ignoreCollisionDuration: 0.3
+  _resetVelocityBeforeKnockback: 1
 --- !u!114 &5791426454753261805
 MonoBehaviour:
   m_ObjectHideFlags: 0
