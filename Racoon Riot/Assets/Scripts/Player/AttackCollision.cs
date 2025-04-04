@@ -15,16 +15,6 @@ public class AttackCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<AttackTask>(out AttackTask task))
-        {
-            if(other.GetComponent<TaskData>().Active)
-            {
-                task.PlayerAttacked(_attackHandler.GetComponent<Player>());
-            }
-        }
-        if(other.transform.CompareTag("Player"))
-        {
-            _attackHandler.Attack(other.gameObject);
-        }
+        _attackHandler.Attack(other.gameObject);
     }
 }

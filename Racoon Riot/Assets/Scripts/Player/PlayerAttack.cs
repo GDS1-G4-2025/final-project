@@ -25,8 +25,16 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack(GameObject target)
     {
-        target.GetComponent<PlayerHealth>().TakeDamage(_attackDamage);
-        target.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * _knockbackForce);
+        if(target.TryGetComponent<TaskData>(out TaskData taskData))
+        {
+            if(taskData.Active)
+            {
+                target.GetComponent<AttackTask>()?.PlayerAttacked(GetComponent<Player>());
+                target.GetComponent<PushTask>()?.SetPlayer(GetComponent<Player>());
+            }
+        }
+        target.GetComponent<PlayerHealth>()?.TakeDamage(_attackDamage);
+        target.GetComponent<Rigidbody>()?.AddForce(gameObject.transform.forward * _knockbackForce);
     }
 
     private void Awake()
