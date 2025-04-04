@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -5697125409019543693}
   - component: {fileID: 7999466968626341766}
   - component: {fileID: 5451690938457733969}
+  - component: {fileID: 4463069215443398356}
   m_Layer: 0
   m_Name: Payload
   m_TagString: PickUpObject
@@ -185,3 +186,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4463069215443398356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003339734239686938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e0a3e162b3603448b971d0eec91aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemType: 2
