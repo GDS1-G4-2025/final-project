@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TaskData))]
@@ -10,10 +11,8 @@ public class SingleComponentTerminal : MonoBehaviour
         _taskData = gameObject.GetComponent<TaskData>();
     }
 
-    private void FixedUpdate()
+    public void AttemptTask(List<Player> players)
     {
-        if(_taskData.playerAttempting){
-            _taskData.TaskCompleted();
-        }
+        _taskData.CompleteTask(players);
     }
 }

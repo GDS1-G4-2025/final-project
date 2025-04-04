@@ -26,6 +26,13 @@ public class FractureOptionsPropertyDrawer : PropertyDrawer
             EditorGUILayout.PropertyField(property.FindPropertyRelative("insideMaterial"));
             EditorGUILayout.PropertyField(property.FindPropertyRelative("textureScale"));
             EditorGUILayout.PropertyField(property.FindPropertyRelative("textureOffset"));
+
+            // Custom explosion options
+            EditorGUILayout.PropertyField(property.FindPropertyRelative("applyExplosionForce"));
+            EditorGUILayout.PropertyField(property.FindPropertyRelative("explosionForce"));
+            EditorGUILayout.PropertyField(property.FindPropertyRelative("explosionRadius"));
+            EditorGUILayout.PropertyField(property.FindPropertyRelative("explosionUpwardsModifier"));
+
         }
 
         EditorGUILayout.EndFoldoutHeaderGroup();

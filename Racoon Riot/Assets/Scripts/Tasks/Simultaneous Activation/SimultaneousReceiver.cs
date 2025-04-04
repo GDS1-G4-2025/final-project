@@ -1,26 +1,37 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TaskData))]
 public class SimultaneousReceiver : MonoBehaviour
 {
-    [SerializeField] private bool _locked = true;
     [SerializeField] private TaskData _taskData;
-    [SerializeField] private int _activeNodes;
+    [SerializeField] private List<SimultaneousTransmitter> _transmitters;
 
     private void Start()
     {
-        _taskData = gameObject.GetComponent<TaskData>();
+        _taskData = GetComponent<TaskData>();
     }
 
-    public void AdjustActiveNodes(int difference){
-        _activeNodes += difference;
-        if(_activeNodes == _taskData.Nodes.Count){ _locked = false; }
-    }
-
-    private void FixedUpdate()
+    public void AddTransmitter(SimultaneousTransmitter transmitter)
     {
-        if(_taskData.playerAttempting && !_locked){
-            _taskData.TaskCompleted();
+        _transmitters.Add(transmitter);
+    }
+
+    public void CheckLocked()
+    {
+        foreach (SimultaneousTransmitter transmitter in _transmitters)
+        {
+            if(!transmitter.GetComponent<TaskData>().Complete){ return; }
         }
+        foreach (SimultaneousTransmitter transmitter in _transmitters)
+        {
+            transmitter.GetComponent<TaskData>().CompleteTask(null);
+        }
+    }
+
+    public void AttemptTask(List<Player> players)
+    {
+        if(players.Count < _transmitters.Count){ return; }
+        _taskData.CompleteTask(players);
     }
 }
