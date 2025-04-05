@@ -35,7 +35,7 @@ public class Pickupable : Interactable
         }
     }
 
-    public void Drop(Transform dropperTransform, float placeDistance)
+    public virtual void Drop(Transform dropperTransform, float placeDistance)
     {
         // Detach from parent
         transform.SetParent(null);

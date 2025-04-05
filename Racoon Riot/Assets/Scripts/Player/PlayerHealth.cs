@@ -1,26 +1,38 @@
 using UnityEngine;
 
-    public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
+{
+    [SerializeField] public float health;
+    private float _maxHealth;
+    private PlayerPickupThrow _pickupSystem;
+
+    private void Start()
     {
-        [SerializeField] public float health;
-        private float _maxHealth;
+        _maxHealth = health;
+        _pickupSystem = GetComponent<PlayerPickupThrow>();
+    }
 
-        private void Start()
+    public void TakeDamage(float dmg)
+    {
+        health -= dmg;
+        if (_pickupSystem != null && _pickupSystem.IsHoldingObject())
         {
-            _maxHealth = health;
+            _pickupSystem.DropHeldObject();
         }
-
-        public void TakeDamage(float dmg)
+        if (health <= 0)
         {
-            health -= dmg;
-            if (health <= 0)
-            {
-                Debug.Log("Dead");
-            }
-        }
-
-        public void Reset()
-        {
-            health = _maxHealth;
+            Debug.Log("Dead");
         }
     }
+
+    public void RestoreHealth(float amount)
+    {
+        health = Mathf.Min(health + amount, _maxHealth);
+        Debug.Log($"Healed {amount}. Current health: {health}");
+    }
+
+    public void Reset()
+    {
+        health = _maxHealth;
+    }
+}

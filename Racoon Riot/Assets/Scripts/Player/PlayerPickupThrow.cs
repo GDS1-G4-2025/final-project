@@ -83,6 +83,10 @@ public class PlayerPickupThrow : MonoBehaviour
         //Debug.Log("Picking up: " + _pickUpTarget.name);
         heldObject = _pickUpTarget;
         heldObject.AttachTo(_itemHolder);
+        if (heldObject is Edible edible)
+        {
+            edible.SetHolder(gameObject); // Set the player as the holder
+        }
         _pickUpTarget = null;
     }
 
@@ -162,4 +166,35 @@ public class PlayerPickupThrow : MonoBehaviour
             _pickUpTarget = null;
         }
     }
+
+    public void OnObjectEat(InputAction.CallbackContext ctx)
+    {
+        if (ctx.phase != InputActionPhase.Started) return;
+         
+        if (heldObject == null)
+        {
+            Debug.Log("Tried to eat but not holding anything.");
+            return;
+        }
+        if (heldObject.TryGetComponent<Edible>(out Edible edible))
+        {
+            Debug.Log("Eating: " + heldObject.name);
+            edible.Interact(); // Start 3-second consumption logic
+        }
+        else
+        {
+        Debug.Log($"{heldObject.name} is not edible.");
+        }
+    }
+    public void DropHeldObject()
+    {
+        if (heldObject != null)
+        {
+            Pickupable objectToDrop = heldObject;
+            heldObject = null;
+            objectToDrop.Drop(transform, _placeDistance);
+            _pickUpTarget = null;
+        }
+    }
+
 }
