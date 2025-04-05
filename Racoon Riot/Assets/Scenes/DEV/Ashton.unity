@@ -237,6 +237,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3626907546398529758, guid: 233ed76734a505a45837a7dacbce6ed9, type: 3}
   m_PrefabInstance: {fileID: 639563915}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &162220396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6821977513351849507, guid: fd582a8c23198204489cfe095160844f, type: 3}
+  m_PrefabInstance: {fileID: 7863613020648531992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &452437567
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +472,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 656535715094558290, guid: fd582a8c23198204489cfe095160844f, type: 3}
   m_PrefabInstance: {fileID: 7863613020648531992}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &765716912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162220396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91fc9178a0b0c3d4bb8b6d91b16d9893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerOptions:
+    triggerType: 3
+    minimumCollisionForce: 0
+    filterCollisionsByTag: 0
+    triggerAllowedTags: []
+    triggerKey: 0
+  fractureOptions:
+    fragmentCount: 10
+    xAxis: 1
+    yAxis: 1
+    zAxis: 1
+    detectFloatingFragments: 0
+    asynchronous: 0
+    insideMaterial: {fileID: 0}
+    textureScale: {x: 1, y: 1}
+    textureOffset: {x: 0, y: 0}
+    applyExplosionForce: 1
+    explosionForce: 5
+    explosionRadius: 7
+    explosionUpwardsModifier: 0
+  refractureOptions:
+    enableRefracturing: 0
+    maxRefractureCount: 1
+    invokeCallbacks: 0
+  callbackOptions:
+    onFracture:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleted:
+      m_PersistentCalls:
+        m_Calls: []
+  currentRefractureCount: 0
 --- !u!1001 &825640591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1228,7 +1277,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6821977513351849507, guid: fd582a8c23198204489cfe095160844f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 765716912}
   m_SourcePrefab: {fileID: 100100000, guid: fd582a8c23198204489cfe095160844f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

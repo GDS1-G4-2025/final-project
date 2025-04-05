@@ -7,9 +7,6 @@ public class PushTask : MonoBehaviour
     private TaskData _taskData;
     [SerializeField] private float _knockbackForce;
 
-    public TriggerOptions triggerOptions;
-    public FractureOptions fractureOptions;
-
     private Rigidbody _rigidbody;
     [SerializeField] private Player completingPlayer;
     [SerializeField] private float _minVelocity = 7;
@@ -39,9 +36,8 @@ public class PushTask : MonoBehaviour
             _taskData.CompleteTask(winner);
             if(_isDestructible)
             {
-                gameObject.AddComponent<Destructible>();
                 Fracture fracture = GetComponent<Fracture>();
-                fracture.fractureOptions = fractureOptions;
+                fracture.CauseFracture();
             }
         }
     }
