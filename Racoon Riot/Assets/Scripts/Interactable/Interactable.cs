@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(ItemData))]
 public class Interactable : MonoBehaviour
 {
     public bool isInteractable = true;

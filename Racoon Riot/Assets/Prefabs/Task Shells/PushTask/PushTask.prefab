@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5003339734239686938
+--- !u!1 &6821977513351849507
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3626907546398529758}
-  - component: {fileID: 4531235380267234485}
-  - component: {fileID: 4226277618258820344}
-  - component: {fileID: 3546891487581645450}
-  - component: {fileID: 8813517720414664082}
-  - component: {fileID: -5697125409019543693}
-  - component: {fileID: 7999466968626341766}
-  - component: {fileID: 5451690938457733969}
-  - component: {fileID: 4463069215443398356}
+  - component: {fileID: 656535715094558290}
+  - component: {fileID: 1928716669782539218}
+  - component: {fileID: 5542698283402744465}
+  - component: {fileID: 6660950842001247880}
+  - component: {fileID: 8348708424084005156}
+  - component: {fileID: 5900489613745713712}
+  - component: {fileID: 3704941387843555416}
+  - component: {fileID: 5704833414744533092}
   m_Layer: 0
-  m_Name: Payload
-  m_TagString: PickUpObject
+  m_Name: PushTask
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3626907546398529758
+--- !u!4 &656535715094558290
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003339734239686938}
+  m_GameObject: {fileID: 6821977513351849507}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: 5, z: 0.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4531235380267234485
+--- !u!33 &1928716669782539218
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003339734239686938}
+  m_GameObject: {fileID: 6821977513351849507}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4226277618258820344
+--- !u!23 &5542698283402744465
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003339734239686938}
+  m_GameObject: {fileID: 6821977513351849507}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -92,13 +91,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3546891487581645450
+--- !u!65 &6660950842001247880
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003339734239686938}
+  m_GameObject: {fileID: 6821977513351849507}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -109,19 +108,19 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8813517720414664082
+--- !u!54 &8348708424084005156
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003339734239686938}
+  m_GameObject: {fileID: 6821977513351849507}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -140,26 +139,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-5697125409019543693
+--- !u!114 &5900489613745713712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003339734239686938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd8cfc40996a4bc8a16c9807c8ba59e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteractable: 1
---- !u!114 &7999466968626341766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003339734239686938}
+  m_GameObject: {fileID: 6821977513351849507}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad15f2a28b048d849862da558c812fd9, type: 3}
@@ -174,28 +160,39 @@ MonoBehaviour:
   playersAttempting: []
   _isActive: 0
   _isComplete: 0
---- !u!114 &5451690938457733969
+--- !u!114 &3704941387843555416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003339734239686938}
+  m_GameObject: {fileID: 6821977513351849507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c8baabbbaf2ae242af7af5ff391466d, type: 3}
+  m_Script: {fileID: 11500000, guid: 945c6d1a2ccc99a4abe9696480b1008a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4463069215443398356
-MonoBehaviour:
+  completingPlayer: {fileID: 0}
+  _minVelocity: 7
+  _isDestructible: 1
+--- !u!65 &5704833414744533092
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003339734239686938}
+  m_GameObject: {fileID: 6821977513351849507}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e0a3e162b3603448b971d0eec91aa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _itemType: 2
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}

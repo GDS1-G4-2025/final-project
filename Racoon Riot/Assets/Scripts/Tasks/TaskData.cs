@@ -8,13 +8,15 @@ public class TaskData : MonoBehaviour
     public string taskName; //Name of the task, appears on task list
     public string stepName;
     public int pointAllocation; //Points allocated per task. This can be applied on any task at any level
+
+    public int taskExpireTime;
     [SerializeField] private GameObject _rootTask; //Parent Task or Task Manager
     public GameObject RootTask 
     { 
         get { return _rootTask; } 
     }
     [SerializeField] private List<GameObject> _nodeTasks; //Child tasks, the very beginning of a task will have no NodeTasks
-    public IReadOnlyList<GameObject> NodeTasks 
+    public List<GameObject> NodeTasks 
     { 
         get { return _nodeTasks; } 
     }
@@ -77,6 +79,7 @@ public class TaskData : MonoBehaviour
         {
             if(transform.GetChild(i).gameObject.TryGetComponent<TaskData>(out TaskData taskData))
             {
+                taskData.taskExpireTime = taskExpireTime;
                 _nodeTasks.Add(taskData.MapTasks(this.gameObject));
             }
         }
@@ -114,6 +117,17 @@ public class TaskData : MonoBehaviour
         else{
             Active = true;
         }
+        Invoke("ExpireTask", taskExpireTime);
+    }
+
+    private void ExpireTask()
+    {
+        if(RootTask.TryGetComponent<TaskManager>(out TaskManager taskManager))
+        {
+            taskManager.ExpireTask(this.gameObject);
+        }
+        Active = false;
+        Complete = false;
     }
 
     public void TryActivateTask() //Checks if all nodes are complete, then activates task and resets nodes
@@ -157,6 +171,7 @@ public class TaskData : MonoBehaviour
 
     public void CompleteTask(List<Player> completingPlayers) //Awards points, resets task, and moves to next task up
     {
+        CancelInvoke("ExpireTask");
         _isActive = false;
         _isComplete = true;
         if(RootTask.transform.parent != null)
@@ -172,6 +187,7 @@ public class TaskData : MonoBehaviour
             foreach(Player player in completingPlayers)
             {
                 player.score.AddPoints(pointAllocation);
+                player.collidingTask = null;
             }
         }
         collidingPlayers.Clear();
