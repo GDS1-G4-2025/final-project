@@ -42,7 +42,8 @@ public class TaskData : MonoBehaviour
                 Payload will automatically complete on activation as there's no task
                 until PayloadReceiver
                 */
-                if(TryGetComponent<Payload>(out Payload taskHandle)){ taskHandle.OnActivate();}
+                if(TryGetComponent<Payload>(out Payload taskHandle)){ taskHandle.OnActivate(); }
+                GetComponent<BasicNodeCompletionCheck>()?.OnActivate();
             }
             else
             {
