@@ -8,7 +8,6 @@ public class Payload : MonoBehaviour
 
     public void OnMap(TaskData taskData)
     {
-        Debug.Log(taskData.transform.name);
         taskData.RootTask.GetComponent<PayloadReceiver>().AddPayload(this);
         GetComponent<Collider>().enabled = true;
         GetComponent<Rigidbody>().isKinematic = false;
