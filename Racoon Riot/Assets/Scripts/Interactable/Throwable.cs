@@ -37,9 +37,7 @@ public class Throwable : Pickupable
         else
         {
             Debug.LogError($"{name} cannot throw - missing Rigidbody.", this);
-            return; // Can't apply force without a rigidbody
+            return;
         }
-
-        //Debug.Log($"{name} was thrown with force: {direction.normalized * _throwForce}");
     }
 }

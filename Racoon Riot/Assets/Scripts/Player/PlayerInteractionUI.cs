@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerInteractionUI : MonoBehaviour
 {
@@ -8,60 +9,104 @@ public class PlayerInteractionUI : MonoBehaviour
     [SerializeField] private Image _upPromptImage;
     [SerializeField] private Image _westPromptImage;
     [SerializeField] private Image _eastPromptImage;
-    [SerializeField] private Vector3 _offset = new Vector3(0, 30, 0);
-
+    [SerializeField] private Vector3 _targetOffset = new Vector3(0, 30, 0);
+    [SerializeField] private Transform _heldObjectAnchor;
+   
+    private RectTransform _panelRectTransform;
     private GameObject _currentTargetObject;
-    private Camera _playerCamera;
+    private Pickupable _currentHeldObject;
     private PlayerPickupThrow _playerPickupThrow;
+    private Camera _playerCamera;
     private Collider _col;
+    private Coroutine _disablePromptsCoroutine;
 
     void Awake()
     {
         _playerCamera = GetComponentInChildren<Camera>();
         _playerPickupThrow = GetComponent<PlayerPickupThrow>();
         _col = GetComponent<Collider>();
+        _panelRectTransform = _promptPanel.GetComponent<RectTransform>();
 
         HideAllPrompts();
     }
 
+    void OnEnable()
+    {
+        if (_playerPickupThrow != null)
+        {
+            // Subscribe the HandleHeldObjectChanged method to the event
+            _playerPickupThrow.OnHeldObjectChanged += HandleHeldObjectChanged;
+            HandleHeldObjectChanged(_playerPickupThrow.HeldObject);
+        }
+    }
+
+    void OnDisable()
+    {
+        if (_playerPickupThrow != null)
+        {
+            _playerPickupThrow.OnHeldObjectChanged -= HandleHeldObjectChanged;
+        }
+    }
+
+    private void HandleHeldObjectChanged(Pickupable newHeldItem)
+    {
+        Debug.Log($"UIManager received held object change: {(newHeldItem != null ? newHeldItem.name : "null")}");
+        _currentHeldObject = newHeldItem;
+        UpdatePromptsVisibility();
+    }
+
     void Update()
     {
-        if (_currentTargetObject != null && _currentTargetObject.activeInHierarchy && _playerCamera != null)
-        {
-            UpdatePromptsVisibility();
+        UpdatePromptsVisibility();
 
-            Vector3 screenPos = _playerCamera.WorldToScreenPoint(_currentTargetObject.transform.position);
-            // Show prompt if object is in front of camera
-            if (screenPos.z > 0)
-            {
-                _promptPanel.SetActive(true);
-                _promptPanel.transform.position = screenPos + _offset;
-            }
-            else
-            {
-                _promptPanel.SetActive(false);
-            }
+        if (_promptPanel.activeSelf)
+        {
+            PositionPromptPanel();
+        }
+    }
+
+    private void PositionPromptPanel()
+    {
+        Vector3 screenPos;
+        Vector3 worldPositionAnchor;
+
+        // Determine what the UI should anchor to
+        if (_currentHeldObject != null && _heldObjectAnchor != null)
+        {
+            worldPositionAnchor = _heldObjectAnchor.position;
+            screenPos = _playerCamera.WorldToScreenPoint(worldPositionAnchor);
+            screenPos += _targetOffset;
+        }
+        else if (_currentTargetObject != null)
+        {
+            // If not holding, anchor near the target object
+            worldPositionAnchor = _currentTargetObject.transform.position;
+            screenPos = _playerCamera.WorldToScreenPoint(worldPositionAnchor);
+            screenPos += _targetOffset;
         }
         else
         {
-            if (_promptPanel.activeSelf)
-            {
-                HideAllPrompts();
-            }
+            _promptPanel.SetActive(false);
+            return;
+        }
+
+        if (screenPos.z > 0)
+        {
+            _panelRectTransform.position = screenPos;
+            if (!_promptPanel.activeSelf) _promptPanel.SetActive(true);
+        }
+        else
+        {
+            _promptPanel.SetActive(false);
         }
     }
 
     public void SetPotentialTarget(GameObject target)
     {
-        _currentTargetObject = target;
-        if (_currentTargetObject != null)
+        if (_currentTargetObject != target)
         {
-            _promptPanel.SetActive(true);
+            _currentTargetObject = target;
             UpdatePromptsVisibility();
-        }
-        else
-        {
-            HideAllPrompts();
         }
     }
 
@@ -70,21 +115,13 @@ public class PlayerInteractionUI : MonoBehaviour
         if (_currentTargetObject == target)
         {
             _currentTargetObject = null;
-            HideAllPrompts();
-        }
-    }
-
-    public void NotifyHeldObjectChanged()
-    {
-        if (_currentTargetObject != null)
-        {
             UpdatePromptsVisibility();
         }
     }
 
     private void UpdatePromptsVisibility()
     {
-        if (_currentTargetObject == null || _playerPickupThrow == null)
+        if (_currentTargetObject == null && _currentHeldObject == null)
         {
             HideAllPrompts();
             return;
@@ -94,47 +131,39 @@ public class PlayerInteractionUI : MonoBehaviour
         bool showWest = false;
         bool showEast = false;
 
-        Interactable interactable = _currentTargetObject.GetComponent<Interactable>();
-        Pickupable pickupable = _currentTargetObject.GetComponent<Pickupable>();
-        Throwable throwable = _currentTargetObject.GetComponent<Throwable>();
-
-        // Pickupable
-        if (interactable != null && !(interactable is Destructible))
+        if (_currentHeldObject != null)
         {
-            if (pickupable == null || !_playerPickupThrow.IsHoldingObject() || _playerPickupThrow.heldObject != pickupable)
-            {
-                showUp = true;
-            }
-        }
-
-        // Dropable
-        if (_playerPickupThrow.IsHoldingObject() && _playerPickupThrow.heldObject == pickupable && _playerPickupThrow.heldObject != throwable)
-        {
-            showUp = true; // Use 'Up' for Drop in your input setup
-        }
-
-        Destructible destructible = _currentTargetObject.GetComponent<Destructible>();
-
-        // Destructible
-        if (destructible != null && destructible.destructionEnabled)
-        {
-            showWest = true;
-            showUp = false;
-            showEast = false;
-        }
-
-        // Throwable
-        if (_playerPickupThrow.IsHoldingObject() && _playerPickupThrow.heldObject == _currentTargetObject)
-        {
+            Debug.Log($"[InteractionUI] Checking held object: {_currentHeldObject.name}");
+            Throwable throwable = _currentHeldObject.GetComponent<Throwable>();
+            Debug.Log($"[InteractionUI] Found Throwable component: {(throwable != null ? "YES" : "NO")}");
             if (throwable != null)
             {
                 showEast = true;
-                showUp = false;
+                Debug.Log("[InteractionUI] Setting showEast = true");
+            }
+        }
+        else if (_currentTargetObject != null)
+        {
+            Interactable interactable = _currentTargetObject.GetComponent<Interactable>();
+
+            if (interactable != null)
+            {
+                Destructible destructible = _currentTargetObject.GetComponent<Destructible>();
+
+                //Destructible
+                if (destructible != null)
+                {
+                    showWest = true;
+                }
+                //Interactable
+                else
+                {
+                    showUp = true;
+                }
             }
         }
 
-        //Apply
-
+        //Apply to UI
         _upPromptImage.gameObject.SetActive(showUp);
         _westPromptImage.gameObject.SetActive(showWest);
         _eastPromptImage.gameObject.SetActive(showEast);
@@ -154,15 +183,10 @@ public class PlayerInteractionUI : MonoBehaviour
        _promptPanel.SetActive(false);
     }
 
-    public void OnTriggerEnter(Collider other)
+    private IEnumerator DisablePromptsForSeconds(float seconds)
     {
-        _currentTargetObject = other.gameObject;
-        UpdatePromptsVisibility();
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        _currentTargetObject = other.gameObject;
+        HideAllPrompts();
+        yield return new WaitForSeconds(seconds);
         UpdatePromptsVisibility();
     }
 }

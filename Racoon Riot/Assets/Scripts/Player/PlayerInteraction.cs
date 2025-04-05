@@ -23,12 +23,12 @@ public class PlayerInteraction : MonoBehaviour
                 // Handle task interaction
                 if (_player.collidingTask != null)
                 {
-                    if(_player.hold.heldObject == null)
+                    if(_player.hold.HeldObject == null)
                     {
                         _player.collidingTask.playersAttempting.Add(_player);
                         _player.collidingTask.PlayerAttempt(_player);
                     }
-                    else if(_player.hold.heldObject.gameObject.TryGetComponent<TaskData>(out TaskData taskData))
+                    else if(_player.hold.HeldObject.gameObject.TryGetComponent<TaskData>(out TaskData taskData))
                     {
                         if(taskData.RootTask == _player.collidingTask.gameObject)
                         {

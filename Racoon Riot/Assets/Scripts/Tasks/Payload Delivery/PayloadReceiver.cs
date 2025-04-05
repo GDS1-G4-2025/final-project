@@ -17,14 +17,14 @@ public class PayloadReceiver : MonoBehaviour
     {
         foreach(Player p in players)
         {
-            if(p.hold.heldObject != null)
+            if(p.hold.HeldObject != null)
             {
-                if(_payloadsRemaining.Contains(p.hold.heldObject.GetComponent<Payload>()))
+                if(_payloadsRemaining.Contains(p.hold.HeldObject.GetComponent<Payload>()))
                 {
-                    _payloadsRemaining.Remove(p.hold.heldObject.GetComponent<Payload>());
-                    p.hold.heldObject.AttachTo(this.gameObject);
-                    p.hold.heldObject.GetComponent<Collider>().enabled = false;;
-                    p.hold.heldObject = null;
+                    _payloadsRemaining.Remove(p.hold.HeldObject.GetComponent<Payload>());
+                    p.hold.HeldObject.AttachTo(this.gameObject);
+                    p.hold.HeldObject.GetComponent<Collider>().enabled = false;;
+                    p.hold.HeldObject = null;
                 }
                 if(_payloadsRemaining.Count == 0)
                 { 

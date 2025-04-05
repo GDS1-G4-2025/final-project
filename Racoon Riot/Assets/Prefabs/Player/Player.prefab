@@ -115,7 +115,6 @@ GameObject:
   - component: {fileID: 2694808508466260177}
   - component: {fileID: 7473662722539942085}
   - component: {fileID: 8359128196048249995}
-  - component: {fileID: 4159805288101113597}
   - component: {fileID: 2213495491605639189}
   m_Layer: 0
   m_Name: Player
@@ -423,12 +422,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7bc5e27941141d7879b855bc21f47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heldObject: {fileID: 0}
+  _heldObject: {fileID: 0}
   _pickUpTarget: {fileID: 0}
   _itemHolder: {fileID: 4580722346766851041}
+  _playerInteractionUI: {fileID: 0}
   _interactCooldown: 0.3
   _placeDistance: 1
   _throwStartPositionOffset: 0.5
+  _ignoreThrownObjectDuration: 0.5
 --- !u!114 &6549571210748212936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +567,6 @@ MonoBehaviour:
   _snapDuration: 0.15
   _snapDistance: 0.5
   _enablePositionSnap: 1
---- !u!114 &4159805288101113597
 --- !u!114 &2213495491605639189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,14 +581,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _promptPanel: {fileID: 6433142415673195312}
   _upPromptImage: {fileID: 8553032328367466979}
-  _westPromptImage: {fileID: 2331921733661355267}
-  _eastPromptImage: {fileID: 5345926459015110974}
-  _offset: {x: 0, y: 30, z: 0}
-  m_Script: {fileID: 11500000, guid: 7fbd591f844b7eb46b1cf720f14b830c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _taskTarget: {fileID: 0}
-  _enableSnapping: 1
+  _westPromptImage: {fileID: 5345926459015110974}
+  _eastPromptImage: {fileID: 2331921733661355267}
+  _targetOffset: {x: 0, y: 30, z: 0}
+  _heldObjectAnchor: {fileID: 7491580088227298890}
 --- !u!1 &683602115596898450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,7 +2597,7 @@ Canvas:
   m_GameObject: {fileID: 6433142415673195312}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1771030902511571472}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
