@@ -96,6 +96,7 @@ public class PlayerInteractionUI : MonoBehaviour
 
         Interactable interactable = _currentTargetObject.GetComponent<Interactable>();
         Pickupable pickupable = _currentTargetObject.GetComponent<Pickupable>();
+        Throwable throwable = _currentTargetObject.GetComponent<Throwable>();
 
         // Pickupable
         if (interactable != null && !(interactable is Destructible))
@@ -107,7 +108,7 @@ public class PlayerInteractionUI : MonoBehaviour
         }
 
         // Dropable
-        if (_playerPickupThrow.IsHoldingObject() && _playerPickupThrow.heldObject == pickupable)
+        if (_playerPickupThrow.IsHoldingObject() && _playerPickupThrow.heldObject == pickupable && _playerPickupThrow.heldObject != throwable)
         {
             showUp = true; // Use 'Up' for Drop in your input setup
         }
@@ -119,12 +120,12 @@ public class PlayerInteractionUI : MonoBehaviour
         {
             showWest = true;
             showUp = false;
+            showEast = false;
         }
 
         // Throwable
         if (_playerPickupThrow.IsHoldingObject() && _playerPickupThrow.heldObject == _currentTargetObject)
         {
-            Throwable throwable = _playerPickupThrow.heldObject.GetComponent<Throwable>();
             if (throwable != null)
             {
                 showEast = true;
@@ -156,10 +157,12 @@ public class PlayerInteractionUI : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         _currentTargetObject = other.gameObject;
+        UpdatePromptsVisibility();
     }
 
     public void OnTriggerExit(Collider other)
     {
         _currentTargetObject = other.gameObject;
+        UpdatePromptsVisibility();
     }
 }
