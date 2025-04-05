@@ -11,5 +11,6 @@ public enum InteractableType
     Food,
     Hazard,
     Payload,
+    Task,
     None
 }

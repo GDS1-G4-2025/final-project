@@ -5,6 +5,8 @@ using UnityEngine;
 public class AttackTask : MonoBehaviour
 {
     private TaskData _taskData;
+
+    [SerializeField] private bool _isDestructible;
     [HideInInspector] public int currentHits;
     [SerializeField] private int hitsRequired;
     [SerializeField] private int _minPlayersRequired, _maxPlayersRequired;
@@ -27,6 +29,10 @@ public class AttackTask : MonoBehaviour
         if(currentHits >= hitsRequired && players.Count > _minPlayersRequired)
         {
             _taskData.CompleteTask(players);
+            if(_isDestructible)
+            {
+                GetComponent<Fracture>().CauseFracture();
+            }
         }
     }
 }

@@ -18,6 +18,9 @@ GameObject:
   - component: {fileID: 5994276837755758803}
   - component: {fileID: 2121482414839024837}
   - component: {fileID: 697139534675579744}
+  - component: {fileID: 1009320931037550511}
+  - component: {fileID: 6926296521701967326}
+  - component: {fileID: 1034617928614348443}
   m_Layer: 0
   m_Name: Roomba
   m_TagString: Untagged
@@ -245,3 +248,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteractable: 1
   destructionEnabled: 1
+--- !u!114 &1009320931037550511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3446952232935266694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e0a3e162b3603448b971d0eec91aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemType: 1
+--- !u!114 &6926296521701967326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3446952232935266694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad15f2a28b048d849862da558c812fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskName: Defeat The Roomba
+  stepName: 
+  pointAllocation: 4
+  taskExpireTime: 120
+  _rootTask: {fileID: 0}
+  _nodeTasks: []
+  collidingPlayers: []
+  playersAttempting: []
+  _isActive: 0
+  _isComplete: 0
+--- !u!114 &1034617928614348443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3446952232935266694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7b72265d6fda444b1843409084007e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHits: 0
+  hitsRequired: 20
+  _minPlayersRequired: 2
+  _maxPlayersRequired: 4
+  players: []

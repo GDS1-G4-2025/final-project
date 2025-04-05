@@ -5,6 +5,8 @@ using UnityEngine;
 public class SingleComponentTerminal : MonoBehaviour
 {
     [SerializeField] private TaskData _taskData;
+    public int playersRequired, triesRequired;
+    private int currentTries;
 
     private void Start()
     {
@@ -13,6 +15,10 @@ public class SingleComponentTerminal : MonoBehaviour
 
     public void AttemptTask(List<Player> players)
     {
-        _taskData.CompleteTask(players);
+        currentTries += 1;
+        if (currentTries >= triesRequired && players.Count >= playersRequired)
+        {
+            _taskData.CompleteTask(players);
+        }
     }
 }
