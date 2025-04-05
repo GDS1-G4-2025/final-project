@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 2694808508466260177}
   - component: {fileID: 7473662722539942085}
   - component: {fileID: 8359128196048249995}
+  - component: {fileID: 2213495491605639189}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -563,6 +564,20 @@ MonoBehaviour:
   _snapDuration: 0.15
   _snapDistance: 0.5
   _enablePositionSnap: 1
+--- !u!114 &2213495491605639189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663259388419450612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbd591f844b7eb46b1cf720f14b830c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _taskTarget: {fileID: 0}
+  _enableSnapping: 1
 --- !u!1 &683602115596898450
 GameObject:
   m_ObjectHideFlags: 0
